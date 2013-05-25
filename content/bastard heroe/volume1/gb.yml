@@ -1,0 +1,9 @@
+gamebook:
+  title: Bastard Heroe
+  author: Joel Grenon
+  revision: 1
+  year: 2013
+  copyright: Joel Grenon. All rights reserved
+  content: bastard_1.gbook
+  monsters: _monsters.yml
+  heroe: _heroe.yml

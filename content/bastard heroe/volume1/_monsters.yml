@@ -1,0 +1,12 @@
+Goblin:
+  skills:
+    PER: 8-11
+    STR: 9-13
+    WIS: 6-10
+    DEX: 7-11
+  health: 12-18
+  magic: 0
+  attack: 9-13
+  dmg: 1-6
+  armor: 8-10
+  image: goblin.png

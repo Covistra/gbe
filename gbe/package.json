@@ -1,0 +1,17 @@
+{
+  "name": "gamebook-engine",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "js-yaml": "~2.0.3",
+    "commander": "~1.1.1",
+    "async": "~0.2.8",
+    "moment": "~2.0.0",
+    "underscore": "~1.4.4",
+    "q": "~0.9.3",
+    "connect": "~2.7.9",
+    "connect-jade": "0.0.3",
+    "express": "~3.2.4",
+    "jade": "~0.30.0"
+  }
+}

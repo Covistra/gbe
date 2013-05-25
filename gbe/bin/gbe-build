@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+var program = require('commander'),
+    cmd = require('../lib/commands/edit');
+
+program
+    .parse(process.argv);
+
+cmd(program);

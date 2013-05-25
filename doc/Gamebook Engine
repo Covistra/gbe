@@ -1,0 +1,13 @@
+Gamebook Engine
+
+The vision is to create an engine that will take as input a specially marked content file and produce an online or offline gamebook app for popular readers like Amazon Kindle Fire, Android, iPad and can easily be extended to support new devices. 
+
+As scenes are read, the engine will detect special markers in the text and perform game logic to either display or hide the specific text portion. The net result is an interactive book that evolves according to the current state of the playing character and a minimum of luck. 
+
+Each scene can branch to a number of other scenes, again depending on various factors : 
+
+- Skill check
+- Level of a skill
+- Specific inventory item(s)
+- Encounter success
+

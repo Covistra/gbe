@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+/**
+ * Vibes Command Line Tools.
+ *
+ * This program will load all commands in the commands folder and initialize them before processing the command line
+ */
+var program = require('commander');
+
+console.log("Vibes Tools");
+console.log("(c) 2013 Vibes.IO. All rights reserved");
+console.log();
+
+program
+    .version('0.0.1')
+    .command('edit', 'Launch the GBE content editor to create gamebooks')
+    .command('build', 'Transform GBE content into a full blown gamebook eBooks application')
+    .command('reader', 'Execute the reader with the specified GBE content')
+    .parse(process.argv);
+

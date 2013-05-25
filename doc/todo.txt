@@ -1,0 +1,9 @@
+- Implement encounter resolution
+	- Encounter state
+	- Action Sequence and Feedback in book page
+	- Dynamic Monster Picture
+	- Dynamic Encounter Actions (Discuss, Retreat)
+	- Treasure Generation + Important Items
+	- Conditional Outcomes (they appear only when the combat is in a certain state)
+	- Update Heroe stats after each action
+	

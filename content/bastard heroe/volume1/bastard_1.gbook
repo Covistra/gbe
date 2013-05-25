@@ -1,0 +1,29 @@
+{Scene:1, start:true, lang:en, rating:E}
+The last raindrops were still hanging on the lower leaves of the tall trees when you got awaken by the first rays of an hopeful morning sun.
+You left your home town of {location:Essimbra}, at the heart of the legendary {location:Elven forest}, with an appetite for adventures,
+to help make the world a better place and leave your name in history's books of the known realms. Equipped with your faithful longbow,
+your deadly sword and your magic art knowledge, you embark in a 3-day trip to {location:Goshwor}, the closest port, where you'll surely get
+plenty of proposals to start your adventuring career.
+{block: PER > 10} Suddenly, you hear a branch crack in the forest to your right. In a mere second, you already have your sword in hand, ready to face whatever challenge lay
+ahead of you.
+{selector: Go(4)}Flee! Run in the wood in the other direction{/selector}
+{/block}
+{block: PER <= 10} Your daydreams quickly come to an end by the sound of an arrow piercing the leaves. {Attack: Arrow(11,2-6)} You are attacked!{/block}
+{selector: Go(2)}Ok, let's fight!{/selector}
+
+{Scene:2, lang:en, rating:E}
+You turn to face your opponent and for a split seconds, you only see branches moving until you see a {Asset: Goblin} jump out of the wood,
+a glowing longsword in hand. Engage!
+{Encounter: Fight, title:"Fighting the Globins!" }
+    {Monster: Goblin, count:1, level:1}
+        {Attack: Axe(11,2-6) }
+        {Treasure: gold:1 }
+    {/Monster}
+    {Outcomes: Win: Go(3), Lost: DEAD, Flee: Go(3)}
+{/Encounter}
+
+{Scene:3, lang:en}
+Leaving the goblin behind, you accelerate the pace to reach the {location: Big Log Inn} before night fall.
+
+{Scene:4, lang:en}
+Without waiting for your opponent to jump from the wood, you quickly enter the deep wood and start running in the opposite direction.

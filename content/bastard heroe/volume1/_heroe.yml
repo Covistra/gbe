@@ -1,0 +1,53 @@
+heroe:
+  health: 9-12
+  magic: 8-11
+  armor: 10
+  level: 1
+  skills:
+    PER: 9-15
+    STR: 9-15
+    WIS: 9-15
+    DEX: 9-15
+  attacks:
+    -
+      key: sword
+      name: Elven Longsword
+      hit: 12
+      dmg: 3-8
+    -
+      key: dagger
+      name: Dagger
+      hit: 11
+      dmg: 1-4
+  spells:
+    -
+      key: firedart
+      name: Fire Dart
+      cost: 1
+      dmg: 1-4
+      range: 10
+    -
+      key: bolt
+      name: Lightning
+      cost: 2
+      dmg: L*1-6
+      range: 20
+  inventory:
+    -
+      key: food
+      name: Food
+      unit: 5
+      active: false
+      effect: health + 5
+    -
+      key: elven_boots
+      name: Elven Boots
+      unit: 2
+      active: true
+      effect: DEX + 1
+    -
+      key: healing_potion
+      name: Healing Potion
+      unit: 3
+      active: false
+      effect: health + 10
