@@ -39,6 +39,7 @@ angular.module('gbe', [])
             this.actions = [];
             this.block = false;
             this.rage = false;
+            this.availableItems = [];
 
             this.addAction = function(action) {
                 this.actions.push(action);
@@ -103,7 +104,47 @@ angular.module('gbe', [])
                     $scope.resolveActions();
                 }
                 else if(outcome === "TARGET_DEAD") {
-                    $scope.scene.resolveOutcome();
+                    var scene;
+
+                    if($scope.actor.isHeroe()) {
+                        $scope.scene.encounter.state = 'won';
+
+                        // Add monster treasure to the scene
+                        _.each(action.target.treasures, function(t){
+                            $scope.encounter.availableItems.push.apply($scope.encounter.availableItems, t.items);
+                        });
+
+                        // Make sure we apply the win outcome if present in this encounter
+                        scene = $scope.scene.encounter.applyOutcome('win', $scope.scene, gb);
+                        if(scene) {
+                            scene.activate(function(scene)  {
+                                $scope.scene = scene;
+
+                                if($scope.scene.encounter) {
+                                    $scope.$emit('start-encounter', $scope.scene.encounter, $scope.scene);
+                                }
+                            });
+                        }
+                        else
+                            console.log("No scene was provided. Let the user pick a selector");
+                    }
+                    else {
+                        $scope.scene.encounter.state = 'lost';
+
+                        // Make sure we apply the win outcome if present in this encounter
+                        scene = $scope.scene.encounter.applyOutcome('lost', $scope.scene, gb);
+                        if(scene) {
+                            scene.activate(function(scene)  {
+                                $scope.scene = scene;
+
+                                if($scope.scene.encounter) {
+                                    $scope.$emit('start-encounter', $scope.scene.encounter, $scope.scene);
+                                }
+                            });
+                        }
+                        else
+                            console.log("No scene was provided. Let the user pick a selector");
+                    }
                 }
 
             });
@@ -116,6 +157,11 @@ angular.module('gbe', [])
 
     $scope.attack = function(attack) {
         $scope.heroe.perform(attack);
+    };
+
+    $scope.pickItem = function(i) {
+        $scope.encounter.availableItems.remove(i);
+        $scope.heroe.addItem(i.description, i.value);
     };
 
     $scope.toggleBlock = function() {

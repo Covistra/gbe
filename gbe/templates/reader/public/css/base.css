@@ -84,6 +84,11 @@ html, body {
     margin-bottom: 10px;
 }
 
+.book > h4 {
+    text-align:center;
+    margin-bottom:10px;
+}
+
 .book > p {
     text-align: justify;
     font-size:120%;
@@ -91,6 +96,10 @@ html, body {
 
 #encounter {
     right: 5px;
+}
+
+#encounter label {
+    font-size:80%;
 }
 
 #heroe {

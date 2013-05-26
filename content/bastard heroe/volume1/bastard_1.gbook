@@ -6,10 +6,10 @@ your deadly sword and your magic art knowledge, you embark in a 3-day trip to {l
 plenty of proposals to start your adventuring career.
 {block: PER > 10} Suddenly, you hear a branch crack in the forest to your right. In a mere second, you already have your sword in hand, ready to face whatever challenge lay
 ahead of you.
-{selector: Go(4)}Flee! Run in the wood in the other direction{/selector}
+{Selector: Go(4)}Flee! Run in the wood in the other direction{/Selector}
 {/block}
-{block: PER <= 10} Your daydreams quickly come to an end by the sound of an arrow piercing the leaves. {Attack: Arrow(11,2-6)} You are attacked!{/block}
-{selector: Go(2)}Ok, let's fight!{/selector}
+{block: PER <= 10} Your daydreams quickly come to an end by the sound of an arrow {Attack: Arrow(11,2-6)} piercing the leaves. You are attacked!{/block}
+{Selector: Go(2)}Ok, let's fight!{/Selector}
 
 {Scene:2, lang:en, rating:E}
 You turn to face your opponent and for a split seconds, you only see branches moving until you see a {Asset: Goblin} jump out of the wood,
@@ -17,13 +17,33 @@ a glowing longsword in hand. Engage!
 {Encounter: Fight, title:"Fighting the Globins!" }
     {Monster: Goblin, count:1, level:1}
         {Attack: Axe(11,2-6) }
-        {Treasure: gold:1 }
+        {Treasure: gold:1, item:"Golden Book":15 }
     {/Monster}
-    {Outcomes: Win: Go(3), Lost: DEAD, Flee: Go(3)}
+    {Outcome Win: Selector: Go(3), The goblin emit a brief guttural noise before crumbling heavily at your feet. You won this fight!}
+    {Outcome Lost: DEAD }
+    {Outcome Flee: Go(4)}
 {/Encounter}
 
 {Scene:3, lang:en}
 Leaving the goblin behind, you accelerate the pace to reach the {location: Big Log Inn} before night fall.
+{Encounter: Fight, title:"Fighting the Dragonne!" }
+    {Monster: Dragonne, count:1, level:1}
+        {Attack: Bite(15,3-9) }
+        {Treasure: gold:20 }
+    {/Monster}
+    {Outcome Win: Selector: Go(6), The goblin emit a brief guttural noise before crumbling heavily at your feet. You won this fight!}
+    {Outcome Lost: DEAD }
+    {Outcome Flee: Go(6)}
+{/Encounter}
 
 {Scene:4, lang:en}
 Without waiting for your opponent to jump from the wood, you quickly enter the deep wood and start running in the opposite direction.
+
+{Scene:5, end:true, lang:en, title: "You're DEAD!" }
+While your dreams were filled with glory, you discovered that in the real life, only a few adventurer survive to see their name sang
+in songs and stories all around the world. You lay down in pain, these thoughts accompanying your last breath. Your adventure is terminated.
+{Selector: Go(1)}Restart Adventure!{/Selector}
+
+{Scene:6, lang:en}
+This is a test
+

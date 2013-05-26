@@ -10,3 +10,15 @@ Goblin:
   dmg: 1-6
   armor: 8-10
   image: goblin.png
+Dragonne:
+  skills:
+    PER: 12-15
+    STR: 14-19
+    WIS: 9-15
+    DEX: 9-12
+  health: 45-90
+  magic: 10-20
+  attack: 12-15
+  dmg: 3-9
+  armor: 15
+  image: dragonne.jpg

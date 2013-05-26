@@ -10,6 +10,18 @@
         return hash;
     }
 
+    Array.prototype.remove = function() {
+        var what, a = arguments, L = a.length, ax;
+        while (L && this.length) {
+            what = a[--L];
+            while ((ax = this.indexOf(what)) !== -1) {
+                this.splice(ax, 1);
+            }
+        }
+        return this;
+    };
+
+
     window.GBE = {
         Parser: function(gb) {
             var gamebook = new GBE.Gamebook(gb);
@@ -67,8 +79,11 @@
             this.scenes = [];
 
             this.startScene = function() {
-                console.log("Looking for start scene");
                 return _.find(_this.scenes, function(s){ return s.start; });
+            };
+
+            this.endScene = function() {
+                return _.find(_this.scenes, function(s){ return s.end; });
             };
 
             this.getScene = function(no) {
@@ -145,8 +160,11 @@
 
                 _this.no = attrs.Scene;
                 _this.start = attrs.start;
+                _this.end = attrs.end;
                 _this.lang = attrs.lang;
                 _this.rating = attrs.rating;
+                if(attrs.title)
+                    _this.title = attrs.title.match(/\"(.*?)\"/)[1];
                 _this.references = [];
                 _this.blocks = [];
                 _this.selectors = [];
@@ -185,6 +203,8 @@
             };
 
             this.render = function(heroe) {
+                var converter = new Showdown.converter();
+
                 var html = _this.content;
                 this.blocks.forEach(function(block, idx) {
                     if(block.isApplicable(heroe)) {
@@ -201,7 +221,7 @@
                         html = html.replace("$block("+idx+")", "");
                 });
 
-                return html;
+                return converter.makeHtml(html);
             };
 
             this.activate = function(cb) {
@@ -239,29 +259,61 @@
             }, this));
 
             // Extract all outcomes
-            var outcomeBody = body.match(/{\s*outcomes\s*:\s*(.*?)\s*}/i);
-            var outcomes = outcomeBody[1].match(/\s*(\w+)\s*:\s*([^,}\s]*)\s*/ig);
-            _.each(outcomes, function(outcome){
-                var fragments = outcome.match(/\s*(\w+)\s*:\s*(.*)/i);
-                _this.outcomes[fragments[1]] = new GBE.Outcome(fragments[2]);
-            });
+            var outcomes = body.match(/{\s*outcome\s*(.*?){1}\s*(.*?)}/ig);
+            _.each(outcomes, _.bind(function(outcomeBody) {
+                console.log(outcomeBody);
+                var outcomeSpec = outcomeBody.match(/{outcome\s*(\w+):\s*(.*?)\s*}/i);
+                this.outcomes[outcomeSpec[1].toLowerCase()] = new GBE.Outcome(outcomeSpec[2]);
+            }, this));
 
             this.addAction = function(action) {
                 this.actions.push(action);
-            }
+            };
+
+            this.applyOutcome = function(key, scene, gamebook) {
+                var outcome = this.outcomes[key.toLowerCase()];
+                if(outcome) {
+                    // Either return a scene or add a selector to the current scene
+                    return outcome.apply(scene, gamebook);
+                }
+                else
+                    console.log("No outcome for specified key", key, this.outcomes);
+            };
         },
         Outcome: function(expr) {
             this.expr = expr;
+
+            this.apply = function(scene, gamebook) {
+                var selector;
+
+                var infos = this.expr.match(/(.*?):(.*)/i);
+                if(infos && infos[1].toLowerCase() === 'selector') {
+                    var args = infos[2].match(/\s*([\w\(\)]+)\s*((?:,\s*)(.*))?/i);
+                    selector = new GBE.Selector(args[1], args[3]);
+                    scene.selectors.push(selector);
+                }
+                else {
+                    // Evaluate expression and produce a scene
+                    selector = new GBE.Selector(this.expr);
+                    var sceneNo = selector.nextScene(gamebook);
+                    return gamebook.getScene(sceneNo);
+                }
+            };
         },
         Selector: function(expr, content, idx) {
             this.expr = expr;
             this.content = content;
             this.index = idx;
 
-            this.nextScene = function() {
+            this.nextScene = function(gamebook) {
                 var sceneKey = this.expr.match(/\s*Go\((\d+)\)\s*/);
                 if(sceneKey) {
                     return sceneKey[1];
+                }
+                else if(this.expr.toLowerCase() === 'dead') {
+                    if(gamebook) {
+                        return gamebook.endScene().no;
+                    }
                 }
                 return null;
             };
@@ -368,6 +420,15 @@
                 this.health -= dmg;
                 return this.health;
             };
+
+            this.addItem = function(desc, unit){
+                this.inventory.push({
+                    key:desc,
+                    name:desc,
+                    unit:unit,
+                    active:false
+                });
+            }
 
         },
         Monster: function(body) {
@@ -504,7 +565,7 @@
 
             this.applyOn = function(target) {
                 console.log("Attack strength: ", this.adjustedHit());
-                var dmgFactor = this.adjustedHit() - target.adjArmor()
+                var dmgFactor = this.adjustedHit() - target.adjArmor();
                 if(dmgFactor >= 0) {
 
                     dmgFactor = dmgFactor / target.adjArmor();
@@ -540,10 +601,39 @@
 
         },
         Treasure:function(body) {
+            this.items = [];
+
+            function match(type) {
+                var regex = new RegExp("{treasure:.*?"+type+":\\s*(\\d+)", "i");
+                var p = body.match(regex);
+                if(p)
+                    return parseInt(p[1]);
+                return 0;
+            }
+
+            var golds = match('gold');
+            if(golds > 0)
+                this.items.push({description:'Golds', value:golds});
+            var gems = match('gems');
+            if(gems > 0)
+                this.items.push({description:'Gems', value:gems});
+
+            var p = body.match(/{treasure:.*?item:\s*"(.*?)":(\d+)/i);
+            while(p != null) {
+                this.items.push(new GBE.Artefact({description:p[1], value:parseInt(p[2])}));
+                body = body.replace(p[0], "");
+                p = body.match(/{treasure:.*?item:\s*"(.*?)":(\d+)/i);
+            }
 
         },
-        Artefact:function(body) {
+        Artefact:function(data) {
+            if(_.isString(data)) {
 
+            }
+            else {
+                this.description = data.description;
+                this.value = data.value;
+            }
         },
         Tools: {
             roll: function(range) {
