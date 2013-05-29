@@ -359,6 +359,12 @@
             });
             this.attacks = attacks;
 
+            var spells = [];
+            _.each(this.spells, function(s) {
+                spells.push(new GBE.Spell(s));
+            });
+            this.spells = spells;
+
             this.type = 'Heroe';
 
             this.adjHealth = function() {
@@ -416,6 +422,14 @@
                     console.log("No nextAction has been installed...");
             };
 
+            this.cast = function(spell) {
+                if(this.nextAction) {
+                    this.nextAction.resolve({action:spell, target:this.currentTarget});
+                }
+                else
+                    console.log("No nextAction has been installed...");
+            };
+
             this.takeHit = function(dmg, type) {
                 this.health -= dmg;
                 return this.health;
@@ -466,11 +480,8 @@
                     console.log("Unsupported monster configuration type: ", type);
             }, this));
 
-            this.load = function($http) {
-                var _this = this;
-                return $http.get('/monster/'+this.type).then(function(resp) {
-                    _.extend(_this, resp.data);
-                });
+            this.appendDetails = function(data) {
+                _.extend(this, data);
             };
 
             this.adjHealth = function() {
@@ -591,13 +602,30 @@
                     target.armor += -1 * ((1+dmgFactor)/2);
                 }
 
-                console.log("New armor value is ", target.adjArmor());
                 return "NEXT_ACTION";
             };
 
             this.adjustedHit = function() {
                 return this.hit + this.hitBonus;
             };
+
+        },
+        Spell: function(body, performer) {
+            if(_.isObject(body)){
+                _.extend(this, body);
+            }
+
+            this.describe = function(){
+                if(performer){
+                    return performer + "casts a "+this.name+" spell";
+                }
+                else
+                    return "You cast a "+this.name+" spell";
+            };
+
+            this.applyOn = function(target) {
+                return "NEXT_ACTION";
+            }
 
         },
         Treasure:function(body) {

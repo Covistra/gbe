@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 
 var program = require('commander'),
-    cmd = require('../lib/commands/edit');
+    cmd = require('../lib/commands/build');
 
 program
+    .option("-g, --gamebook [book]", "The content to display. Either a gbe file or a folder containing the GBE content")
+    .option("-d, --destination [path]", "The folder where the application code will be generated")
+    .option("-t, --token [token]", "The Phonegap Build token to build your app")
+    .option("-l, --local [local]", "Only generate application files without sending them to Phonegap build")
     .parse(process.argv);
 
 cmd(program);

@@ -20,9 +20,151 @@
  POSSIBILITY OF SUCH DAMAGE.
  */
 (function() {
+    var phonegap = require('phonegap-build-api'),
+        path = require('path'),
+        async = require('async'),
+        _ = require('underscore'),
+        jade = require('jade'),
+        request = require('request'),
+        yaml = require('js-yaml'),
+        wrench = require('wrench'),
+        fs = require('fs');
 
     module.exports = function(program) {
-        console.log("Building gamebook ");
+        var sourcePath = path.resolve(program.gamebook);
+        var destPath = path.resolve(program.destination);
+
+        console.log("Building gamebook...");
+        console.log("Content Source:", sourcePath);
+        console.log("Destination:", destPath);
+
+        if(program.local) {
+            console.log("Book files won't be sent to PhoneGap build");
+        }
+        else {
+            console.log("Book apps will be generated using PhoneGap Build with token", program.token);
+        }
+
+        async.auto({
+            book_content: function(callback) {
+                console.log("Loading the book content for template rendering", path.join(sourcePath, "gb.yml"));
+                fs.readFile(path.join(sourcePath, "gb.yml"), function(err, content) {
+                    if(err) return callback(err);
+                    var gb = yaml.load(content+"");
+                    return callback(null, gb.gamebook);
+                });
+            },
+            dest_path:['book_content', function(callback, data) {
+                console.log("Check the destination folder");
+                if(!fs.existsSync(destPath)) {
+
+                    console.log("Creating destination folder");
+                    wrench.mkdirSyncRecursive(destPath, 0777);
+                }
+                else
+                    console.log("Reusing existing destination path");
+                callback();
+            }],
+            create_structure:['dest_path', function(callback){
+                console.log("Create application structure");
+                try {
+                    fs.mkdirSync(path.join(destPath, "js"));
+                    fs.mkdirSync(path.join(destPath, "css"));
+                    fs.mkdirSync(path.join(destPath, "content"));
+                    fs.mkdirSync(path.join(destPath, "img"));
+                }
+                catch(err){}
+                finally {
+                    callback();
+                }
+            }],
+            copy_external_js:['create_structure',function(callback)  {
+                var external_files = {
+                    'jquery': "http://code.jquery.com/jquery.js",
+                    'angular': "http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.3/angular.min.js",
+                    'underscore': "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js",
+                    'q': "http://cdnjs.cloudflare.com/ajax/libs/q.js/0.9.2/q.min.js",
+                    "js-yaml": "https://raw.github.com/nodeca/js-yaml/master/js-yaml.js"
+                };
+
+                async.forEach(_.keys(external_files), function(filename, done) {
+                    console.log("Installing "+filename+".js from ", external_files[filename]);
+                    request.get(external_files[filename]).pipe(fs.createWriteStream(path.join(destPath, "js", filename+".js")));
+                    done();
+                },callback);
+
+            }],
+            copy_external_css:['create_structure', function(callback) {
+                var external_files = {
+                };
+
+                async.forEach(_.keys(external_files), function(filename, done) {
+                    console.log("Installing "+filename+".css from ", external_files[filename]);
+                    request.get(external_files[filename]).pipe(fs.createWriteStream(path.join(destPath, "css", filename+".css")));
+                    done();
+                },callback);
+            }],
+            copy_local_css_files:['create_structure', function(callback) {
+                var files = {
+                    "base": "templates/reader/public/css/base.css",
+                    "bootstrap" : "templates/reader/public/css/bootstrap.css",
+                    "bootstrap-lightbox" : "templates/reader/public/css/bootstrap-lightbox.min.css"
+                };
+
+                async.forEach(_.keys(files), function(filename, done) {
+                    console.log("Installing "+filename+".css from ", files[filename]);
+                    fs.createReadStream(path.resolve(files[filename])).pipe(fs.createWriteStream(path.join(destPath, "css", filename+".css")));
+                    done();
+                },callback);
+                callback();
+            }],
+            copy_local_js_files:['create_structure', function(callback) {
+                var files = {
+                    "showdown": "templates/reader/public/js/showdown.js",
+                    "gbe": "templates/reader/public/js/gbe.js",
+                    "bootstrap": "templates/reader/public/js/bootstrap.js",
+                    "bootstrap-lightbox": "templates/reader/public/js/bootstrap-lightbox.min.js",
+                    "app": "templates/reader/public/js/app.js",
+                    "gbe-local-content": "templates/build/gbe-local-content.js"
+                };
+
+                async.forEach(_.keys(files), function(filename, done) {
+                    console.log("Installing "+filename+".js from ", files[filename]);
+                    fs.createReadStream(path.resolve(files[filename])).pipe(fs.createWriteStream(path.join(destPath, "js", filename+".js")));
+                    done();
+                },callback);
+                callback();
+            }],
+            copy_book_content: ['create_structure', function(callback) {
+                wrench.rmdirSyncRecursive(path.join(destPath, "content"), true);
+                wrench.copyDirRecursive(sourcePath, path.join(destPath, "content"), {
+                    forceDelete: false,
+                    excludeHiddenUnix: true
+                }, callback);
+            }],
+            render_app_page: ['create_structure', 'book_content', function(callback, data) {
+                fs.readFile(path.resolve('templates/build/index.jade'), function(err, tmpl) {
+                    var fn = jade.compile(tmpl+"", {pretty:true});
+                    fs.writeFile(path.join(destPath, "index.html"), fn({title:data.book_content.title, gamebook: data.book_content}), callback);
+                });
+            }],
+            create_phonegap_config: ['create_structure', function(callback) {
+                console.log("Create phonegap build application config");
+                fs.createReadStream(path.resolve('templates/build/config.xml')).pipe(fs.createWriteStream(path.join(destPath, "config.xml")));
+                callback();
+            }],
+            phonegap:[function(callback) {
+                if(!program.local)
+                    phonegap.auth({ token: program.token }, callback);
+                else
+                    callback();
+            }]
+        }, function(err) {
+            if(err) console.log(err);
+            else
+                console.log("Build completed successfully");
+        });
+
     };
 
 })();

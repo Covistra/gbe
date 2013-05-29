@@ -1,4 +1,4 @@
-angular.module('gbe', [])
+angular.module('gbe', ['gbe.services'])
 
 .provider('parser', function() {
     return {
@@ -8,7 +8,7 @@ angular.module('gbe', [])
     };
 })
 
-.controller('GameBookCtrl', function($scope, $http, parser, $q) {
+.controller('GameBookCtrl', function($scope, parser, $q, contentService) {
     var gb;
 
     $scope.encounter = undefined;
@@ -18,18 +18,21 @@ angular.module('gbe', [])
         return false;
     });
 
-    $http.get('/heroe').success(function(heroe) {
+    contentService.loadHeroe().then(function(heroe) {
         $scope.heroe = new GBE.Heroe(heroe);
 
-        $http.get('/content').success(function(content) {
+        contentService.loadBook().then(function(book){
+            contentService.loadContent(book.content).then(function(content) {
 
-            parser.parse(content, function(err, gamebook) {
-                gb = gamebook;
+                parser.parse(content, function(err, gamebook) {
+                    gb = gamebook;
 
-                // start the book (should display title page here)
-                $scope.scene = gamebook.startScene();
+                    // start the book (should display title page here)
+                    $scope.scene = gamebook.startScene();
+                });
             });
         });
+
     });
 
     $scope.$on('start-encounter', function(e, encounter, scene){
@@ -49,7 +52,7 @@ angular.module('gbe', [])
         // Load monster details
         var monsterDetails = [];
         _.each(encounter.monsters, function(monster) {
-            monsterDetails.push(monster.load($http));
+            monsterDetails.push(contentService.loadMonster(monster));
         });
 
         // Build the actor list, sorted by high DEX
@@ -159,9 +162,17 @@ angular.module('gbe', [])
         $scope.heroe.perform(attack);
     };
 
+    $scope.cast = function(spell) {
+        $scope.heroe.cast(spell);
+    };
+
     $scope.pickItem = function(i) {
         $scope.encounter.availableItems.remove(i);
         $scope.heroe.addItem(i.description, i.value);
+    };
+
+    $scope.useItem = function(i) {
+
     };
 
     $scope.toggleBlock = function() {
@@ -221,4 +232,10 @@ angular.module('gbe', [])
 
     };
 
+})
+
+.run(function($rootScope) {
+    document.addEventListener('deviceready', function() {
+        $rootScope.$broadcast('deviceready');
+    }, false);
 });

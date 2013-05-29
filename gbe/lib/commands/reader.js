@@ -79,7 +79,7 @@
         });
 
         server.listen(port, function() {
-//            spawn('open', ['http://localhost:'+port]);
+            spawn('open', ['http://localhost:'+port]);
             console.log("GBE Reader has been launched at http://localhost:"+port+"/");
         });
 

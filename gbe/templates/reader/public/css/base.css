@@ -52,8 +52,18 @@ html, body {
 }
 
 .book > .content {
-    min-height: 630px;
+    height: 540px;
     padding:10px;
+    overflow-y: auto;
+}
+
+ul.actions {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+ul.actions > li {
+    list-style: circle;
 }
 
 .book > .location {
@@ -109,8 +119,8 @@ html, body {
 .slide-panel {
     position:absolute;
     width: 200px;
-    min-height:60em;
     padding:10px;
+    height:735px;
     background-color: #eee;
     box-shadow:1px 1px 3px #000;
     border-radius: 5px;

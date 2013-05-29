@@ -12,6 +12,9 @@
     "connect": "~2.7.9",
     "connect-jade": "0.0.3",
     "express": "~3.2.4",
-    "jade": "~0.30.0"
+    "jade": "~0.30.0",
+    "phonegap-build-api": "~0.3.3",
+    "request": "~2.21.0",
+    "wrench": "~1.5.1"
   }
 }
