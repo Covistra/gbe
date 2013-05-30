@@ -13,17 +13,16 @@ angular.module('gbe', ['gbe.services'])
 
     $scope.encounter = undefined;
 
-    $("body").on('click', "a[data-action=show-asset]", function(e){
-        alert("This is a test! "+$(e.target).attr('href'));
+    $("body").on('click', "a[data-action=show-asset]", function(e) {
+        var key = $(e.target).attr('href').substr(1);
+        $scope.showAsset(key);
         return false;
     });
 
     contentService.loadHeroe().then(function(heroe) {
         $scope.heroe = new GBE.Heroe(heroe);
-
-        contentService.loadBook().then(function(book){
+        contentService.loadBook().then(function(book) {
             contentService.loadContent(book.content).then(function(content) {
-
                 parser.parse(content, function(err, gamebook) {
                     gb = gamebook;
 
@@ -77,6 +76,17 @@ angular.module('gbe', ['gbe.services'])
             $scope.resolveActions();
         });
     });
+
+    $scope.safeApply = function(fn) {
+        var phase = this.$root.$$phase;
+        if(phase == '$apply' || phase == '$digest') {
+            if(fn && (typeof(fn) === 'function')) {
+                fn();
+            }
+        } else {
+            this.$apply(fn);
+        }
+    };
 
     $scope.nextActor = function() {
         if($scope.actorIndex === $scope.encounter.actors.length - 1 || _.isUndefined($scope.actorIndex))
@@ -230,6 +240,29 @@ angular.module('gbe', ['gbe.services'])
             });
         }
 
+    };
+
+    $scope.showMap = function() {
+        $scope.asset = {
+            key: 'world_map.jpg',
+            name: 'Adventure Map'
+        };
+        $("#assetWindow").modal('show');
+    };
+
+    $scope.showAsset = function(key, raw) {
+        $scope.safeApply(function(){
+            if(!raw) {
+                $scope.asset = $scope.scene.findAsset(key);
+            }
+            else {
+                $scope.asset = {
+                    key: key,
+                    name: ""
+                }
+            }
+            $("#assetWindow").modal('show');
+        });
     };
 
 })

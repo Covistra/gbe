@@ -120,11 +120,12 @@
                     var matches = content.match(/{\s*asset:([^}]*)}/ig);
                     if(matches) {
                         matches.forEach(function(a) {
-                            var key = a.match(/:([\w\s]+)/);
+                            var key = a.match(/:\s*(\w+)\s*,\s*(.*?)\s*}/);
                             _this.assets.push({
-                                name:key[1]
+                                name:key[1],
+                                key: key[2]
                             });
-                            result = result.replace(a, "<a href='#"+ $.trim(key[1])+"' data-action='show-asset'>"+key[1]+"</a>");
+                            result = result.replace(a, "<a href='#"+ $.trim(key[2])+"' data-action='show-asset'>"+key[1]+"</a>");
                         });
                     }
                 }
@@ -226,7 +227,12 @@
 
             this.activate = function(cb) {
                 cb(this);
-            }
+            };
+
+            this.findAsset = function(key) {
+                return _.find(this.assets, function(a) { return a.key === key });
+            };
+
         },
         Block: function(expr, content, idx) {
             this.expr = expr;

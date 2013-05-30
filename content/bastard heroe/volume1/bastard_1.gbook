@@ -12,7 +12,7 @@ ahead of you.
 {Selector: Go(2)}Ok, let's fight!{/Selector}
 
 {Scene:2, lang:en, rating:E}
-You turn to face your opponent and for a split seconds, you only see branches moving until you see a {Asset: Goblin} jump out of the wood,
+You turn to face your opponent and for a split seconds, you only see branches moving until you see a {Asset: Goblin, goblin.jpg} jump out of the wood,
 a glowing longsword in hand. Engage!
 {Encounter: Fight, title:"Fighting the Globins!" }
     {Monster: Goblin, count:1, level:1}

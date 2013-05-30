@@ -27,6 +27,7 @@
         jade = require('jade'),
         request = require('request'),
         yaml = require('js-yaml'),
+        archiver = require('archiver'),
         wrench = require('wrench'),
         fs = require('fs');
 
@@ -107,8 +108,7 @@
             copy_local_css_files:['create_structure', function(callback) {
                 var files = {
                     "base": "templates/reader/public/css/base.css",
-                    "bootstrap" : "templates/reader/public/css/bootstrap.css",
-                    "bootstrap-lightbox" : "templates/reader/public/css/bootstrap-lightbox.min.css"
+                    "bootstrap" : "templates/reader/public/css/bootstrap.css"
                 };
 
                 async.forEach(_.keys(files), function(filename, done) {
@@ -123,7 +123,6 @@
                     "showdown": "templates/reader/public/js/showdown.js",
                     "gbe": "templates/reader/public/js/gbe.js",
                     "bootstrap": "templates/reader/public/js/bootstrap.js",
-                    "bootstrap-lightbox": "templates/reader/public/js/bootstrap-lightbox.min.js",
                     "app": "templates/reader/public/js/app.js",
                     "gbe-local-content": "templates/build/gbe-local-content.js"
                 };
@@ -153,11 +152,63 @@
                 fs.createReadStream(path.resolve('templates/build/config.xml')).pipe(fs.createWriteStream(path.join(destPath, "config.xml")));
                 callback();
             }],
+            zip_app:['create_phonegap_config', 'render_app_page', 'copy_book_content', function(callback){
+                var output = fs.createWriteStream(__dirname + '/app.zip');
+                var archive = archiver('zip');
+                archive.on('error', function(err) {
+                    callback(err);
+                });
+                archive.pipe(output);
+                var files = wrench.readdirSyncRecursive(destPath);
+                _.each(files, function(f) {
+                    console.log(path.join(destPath, f));
+                    if(!fs.statSync(path.join(destPath, f)).isDirectory()) {
+                        archive.append(fs.createReadStream(path.join(destPath, f)), {name: f});
+                    }
+                    else
+                        console.log("Skipping folder ", f);
+                });
+                archive.finalize(function(err) {
+                    console.log("Finalizing zip app");
+                    if (err) {
+                        callback(err);
+                    }
+                    callback(null, __dirname + "/app.zip");
+                });
+            }],
             phonegap:[function(callback) {
                 if(!program.local)
                     phonegap.auth({ token: program.token }, callback);
                 else
                     callback();
+            }],
+            build_app:['phonegap', 'zip_app', function(callback, data){
+                if(!program.local) {
+                    console.log("Sending the zip file to Phoengap build", data.zip_app);
+                    var options = {
+                        form: {
+                            data: {
+                                title: data.book_content.title,
+                                create_method: 'file'
+                            },
+                            file: path.resolve(data.zip_app)
+                        }
+                    };
+                    data.phonegap.post('/apps', options, function(err, data){
+                        if(err) console.log(err);
+                        console.log(data);
+                        callback(null, data);
+                    });
+                }
+                else
+                    callback();
+            }],
+            cleanup: ['build_app', function(callback, data){
+                if(!program.local) {
+                    console.log("Clean files up");
+                    fs.unlinkSync(data.zip_data);
+                }
+                callback();
             }]
         }, function(err) {
             if(err) console.log(err);

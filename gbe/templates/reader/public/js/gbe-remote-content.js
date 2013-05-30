@@ -4,7 +4,23 @@ angular.module('gbe.services', [], function($provide) {
         return new function() {
 
             this.loadBook = function(key) {
-                return $http.get('/content');
+                var def = $q.defer();
+                $http.get('/book').then(function(resp){
+                    def.resolve(resp.data);
+                }, function(reason){
+                    def.reject(reason);
+                });
+                return def.promise;
+            };
+
+            this.loadContent = function(key) {
+                var def = $q.defer();
+                $http.get('/content').then(function(resp){
+                    def.resolve(resp.data);
+                }, function(reason){
+                    def.reject(reason);
+                });
+                return def.promise;
             };
 
             this.loadMonster = function(monster) {
@@ -19,7 +35,13 @@ angular.module('gbe.services', [], function($provide) {
             };
 
             this.loadHeroe = function() {
-                return $http.get('/heroe');
+                var def = $q.defer();
+                $http.get('/heroe').then(function(resp) {
+                    def.resolve(resp.data);
+                }, function(reason){
+                    def.reject(reason);
+                });
+                return def.promise;
             };
 
         };

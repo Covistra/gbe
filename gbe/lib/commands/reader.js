@@ -50,6 +50,10 @@
             });
         });
 
+        app.get('/book', function(req, res){
+            res.json(gamebook);
+        });
+
         app.get("/content", function(req, res){
             fs.readFile(path.resolve(program.gamebook || __dirname, gamebook.content), function(err, content) {
                 res.end(content+"");

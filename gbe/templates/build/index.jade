@@ -10,7 +10,6 @@ html
       link(rel="apple-touch-icon", href="img/favicon.png")
       link(rel="icon",type="image/png",href="img/favicon.png")
       link(rel='stylesheet', href="css/bootstrap.css")
-      link(rel='stylesheet', href="css/bootstrap-lightbox.css")
       link(rel="stylesheet", href="css/base.css")
     block scripts
       script(src="js/jquery.js")
@@ -19,7 +18,7 @@ html
       script(src="js/underscore.js")
       script(src="js/q.js")
       script(src="js/showdown.js")
-      script(src="js/bootstrap-lightbox.js")
+      script(src="js/bootstrap.js")
       script(src='js/js-yaml.js')
       script(src="js/gbe.js")
       script(src="js/gbe-local-content.js")
@@ -48,7 +47,7 @@ html
 
       .book(ng-class="{wide:!scene.encounter, narrow: scene.encounter}")
         .header
-          a.btn.btn-mini.pull-left(data-toggle="lightbox", href="#map") Map
+          a.btn.btn-mini.pull-left(ng-click="showMap()") Map
           p {{title}} - {{author}}
         .content
           h4(ng-show="scene.title") {{scene.title}}
@@ -65,7 +64,7 @@ html
           .alert(ng-repeat="notif in notifications") {{notif.message}}
 
       #encounter.slide-panel(data-ng-show='scene.encounter')
-        img(ng-src="content/_assets/{{monster.image}}")
+        a(href="#", ng-click="showAsset(monster.image, true)"): img(ng-src="content/_assets/{{monster.image}}")
         hr
         .progress: .progress-bar(ng-style="{width: monster.healthRatio()+'%'}", ng-class="{'progress-bar-success':monster.adjHealth() > 6, 'progress-bar-warning':monster.adjHealth() <= 6 && monster.adjHealth() > 2, 'progress-bar-danger':monster.adjHealth() <= 2}") Health ({{monster.adjHealth()}} / {{monster.adjMaxHealth()}})
         div(ng-show="monster.adjMagic() > 0")
@@ -86,3 +85,11 @@ html
           hr
           h4 References
           button.btn.btn-block(data-ng-repeat="r in scene.references") {{r.name}}
+
+      #assetWindow.modal.fade(tabindex='-1', role='dialog', aria-labelledby='mapWindowLabel', aria-hidden='true')
+        .modal-dialog: .modal-content
+          .modal-header(ng-show="asset.name")
+            button(type="button", class="close", data-dismiss="modal", aria-hidden="true") &times;
+            h4.modal-title {{asset.name}}
+          .modal-body
+            img(ng-src="content/_assets/{{asset.key}}")

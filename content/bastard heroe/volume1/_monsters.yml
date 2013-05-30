@@ -9,7 +9,7 @@ Goblin:
   attack: 9-13
   dmg: 1-6
   armor: 8-10
-  image: goblin.png
+  image: goblin.jpg
 Dragonne:
   skills:
     PER: 12-15

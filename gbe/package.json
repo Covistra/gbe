@@ -15,6 +15,7 @@
     "jade": "~0.30.0",
     "phonegap-build-api": "~0.3.3",
     "request": "~2.21.0",
-    "wrench": "~1.5.1"
+    "wrench": "~1.5.1",
+    "archiver": "~0.4.3"
   }
 }
