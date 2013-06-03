@@ -159,7 +159,7 @@
 
             this.parse = function(lines, attrs, idx, cb) {
 
-                _this.no = attrs.Scene;
+                _this.no = parseInt(attrs.Scene);
                 _this.start = attrs.start;
                 _this.end = attrs.end;
                 _this.lang = attrs.lang;
@@ -170,6 +170,7 @@
                 _this.blocks = [];
                 _this.selectors = [];
                 _this.assets = [];
+                _this.milestone = attrs.milestone;
 
                 var content = [];
                 while(idx < lines.length && lines[idx].length != 0) {

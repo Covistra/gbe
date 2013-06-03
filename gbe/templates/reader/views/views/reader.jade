@@ -1,0 +1,64 @@
+#reader(data-ng-controller="GameBookCtrl", data-ng-init="title='#{gamebook.title}'; author='#{gamebook.author}'", ng-cloak="true")
+  #heroe.slide-panel
+    .progress: .progress-bar(ng-style="{width: heroe.healthRatio()+'%'}", ng-class="{'progress-bar-success':heroe.adjHealth() > 6, 'progress-bar-warning':heroe.adjHealth() <= 6 && heroe.adjHealth() > 2, 'progress-bar-danger':heroe.adjHealth() <= 2}") Health ({{heroe.adjHealth()}} / {{heroe.adjMaxHealth()}})
+    .progress: .progress-bar.progress-bar-danger(ng-style="{width: heroe.magicRatio()+'%'}") Magic ({{heroe.adjMagic()}} / {{heroe.adjMaxMagic()}})
+    .progress: .progress-bar.progress-bar-info(ng-style="{width: heroe.armorRatio()+'%'}") Armor ({{heroe.adjArmor()}} / {{heroe.adjMaxArmor()}})
+    hr
+    h4 Skills
+    ul.list-unstyled
+      li(ng-repeat="(k,v) in heroe.skills") <strong>{{k}}</strong> :
+        span.pull-right {{v}}
+    hr
+    h4 Weapons
+    button.btn.btn-block.btn-mini.btn-primary(data-ng-repeat="at in heroe.attacks", ng-disabled="!actor.isHeroe()", ng-click="attack(at)") Attack: {{at.name}} <span class='stats'>({{at.adjustedHit()}})</span>
+    hr
+    h4 Spellbook
+    button.btn.btn-block.btn-mini.btn-danger(data-ng-repeat="s in heroe.spells", data-ng-disabled="heroe.magic < s.cost || !actor.isHeroe()", ng-click="cast(s)") Spell: {{s.name}}
+    hr
+    h4 Inventory
+    button.btn.btn-block.btn-mini(ng-click="useItem(i)", data-ng-repeat="i in heroe.inventory", ng-disabled="!actor.isHeroe()", data-ng-hide="i.unit == 0", ng-class="{'btn-info':i.active}") Item: {{i.name}} ({{i.unit}})
+  .book(ng-class="{wide:!scene.encounter, narrow: scene.encounter}")
+    .header
+      a.btn.btn-mini.pull-left(ng-click="showMap()") Map
+      p {{title}} - {{author}}
+    .content
+      h4(ng-show="scene.title") {{scene.title}}
+      h5(ng-show="scene.encounter.title") {{scene.encounter.title}}
+      p(ng-bind-html-unsafe="scene.render(heroe)")
+      #actions(ng-show="scene.encounter")
+        hr
+        ul.actions
+          li(ng-repeat="a in encounter.actions") {{a}}
+      hr
+      btn.btn.btn-block.btn-navbar.btn-info(ng-click="choose(sel)", ng-repeat="sel in scene.selectors") {{sel.content}}
+    .footer
+      .alert(ng-repeat="notif in notifications") {{notif.message}}
+  #encounter.slide-panel(data-ng-show='scene.encounter')
+    a(href="#", ng-click="showAsset(monster.image, true)"): img(ng-src="/asset/{{monster.image}}")
+    hr
+    .progress: .progress-bar(ng-style="{width: monster.healthRatio()+'%'}", ng-class="{'progress-bar-success':monster.adjHealth() > 6, 'progress-bar-warning':monster.adjHealth() <= 6 && monster.adjHealth() > 2, 'progress-bar-danger':monster.adjHealth() <= 2}") Health ({{monster.adjHealth()}} / {{monster.adjMaxHealth()}})
+    div(ng-show="monster.adjMagic() > 0")
+      .progress: .progress-bar.progress-bar-danger(ng-style="{width: monster.magicRatio()+'%'}") Magic ({{monster.adjMagic()}} / {{monster.adjMaxMagic()}})
+    .progress: .progress-bar.progress-bar-info(ng-style="{width: monster.armorRatio()+'%'}") Armor ({{monster.adjArmor()}} / {{monster.adjMaxArmor()}})
+    #encounter-action(ng-show="encounter && scene.encounter.state != 'won'")
+      hr
+      h5 Encounter Actions
+      button.btn.btn-mini.btn-block(ng-class="{'btn-success':encounter.block}", ng-click="toggleBlock()", ng-disabled="encounter.rage || !actor.isHeroe()") Block
+      button.btn.btn-mini.btn-block(ng-class="{'btn-danger':encounter.rage}", ng-click="toggleRage()", ng-disabled="encounter.block || !actor.isHeroe()") Rage
+      button.btn.btn-mini.btn-block(ng-click="heroeRetreat()",ng-disabled="encounter.rage || !actor.isHeroe()") Retreat
+      button.btn.btn-mini.btn-block(ng-click="heroeDiscuss()",ng-disabled="encounter.rage || !actor.isHeroe()")  Discuss
+    div(ng-show="scene.encounter.state == 'won' && encounter.availableItems.length > 0")
+      hr
+      h4 Discovered Items
+      button.btn.btn-block.btn-warning(ng-repeat="i in encounter.availableItems", ng-click="pickItem(i)") {{i.description}}: {{i.value}}
+    div(ng-show="scene.references")
+      hr
+      h4 References
+      button.btn.btn-block(data-ng-repeat="r in scene.references") {{r.name}}
+  #assetWindow.modal.fade(tabindex='-1', role='dialog', aria-labelledby='mapWindowLabel', aria-hidden='true')
+    .modal-dialog: .modal-content
+      .modal-header(ng-show="asset.name")
+        button(type="button", class="close", data-dismiss="modal", aria-hidden="true") &times;
+        h4.modal-title {{asset.name}}
+      .modal-body
+        img(ng-src="/asset/{{asset.key}}")

@@ -1,0 +1,17 @@
+#titlepage(data-ng-controller="TitlepageCtrl", data-ng-init="title='#{gamebook.title}'; author='#{gamebook.author}'", ng-cloak="true")
+  h1 {{title}}
+  h2 By {{author}}
+  ul.profiles
+    li(ng-repeat="p in profiles", ng-click="loadProfile(p)")
+      .transluent
+      h3
+        img.pull-left(src="/img/swords.png")&nbsp;
+        span {{p}}
+        button.btn.pull-right.btn-warning(ng-click="removeProfile(p)") &times;
+    li(ng-click="createProfile()")
+      .transluent
+      h3
+        img.pull-left(src="/img/swords.png")&nbsp;
+        span Start a new Adventure!
+  .footer
+     p Powered by Gamebook Engine. Distributed under GPL v3 license.

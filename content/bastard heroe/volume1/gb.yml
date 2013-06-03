@@ -1,4 +1,5 @@
 gamebook:
+  key: bastard_heroe
   title: Bastard Heroe
   author: Joel Grenon
   revision: 1
@@ -7,3 +8,7 @@ gamebook:
   content: bastard_1.gbook
   monsters: _monsters.yml
   heroe: _heroe.yml
+  maxProgress: 10
+  maxArtefacts: 5
+
+

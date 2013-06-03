@@ -32,9 +32,10 @@
     module.exports = function(program) {
         var port = program.port || 8080;
         var readerImpl = program.reader || "reader";
-        var gamebook = require(path.resolve(program.gamebook || __dirname, "gb.yml")).gamebook;
-        var monsters = require(path.resolve(program.gamebook || __dirname, gamebook.monsters));
-        var heroe = require(path.resolve(program.gamebook || __dirname, gamebook.heroe)).heroe;
+        var gamebook = require(path.resolve(program.gamebook || process.cwd(), "gb.yml")).gamebook;
+        var monsters = require(path.resolve(program.gamebook || process.cwd(), gamebook.monsters));
+        var heroe = require(path.resolve(program.gamebook || process.cwd(), gamebook.heroe)).heroe;
+        var datapath = program.data || process.cwd();
 
         var app = express();
         app.set('views', __dirname + '../../../templates/reader/views');
@@ -55,7 +56,7 @@
         });
 
         app.get("/content", function(req, res){
-            fs.readFile(path.resolve(program.gamebook || __dirname, gamebook.content), function(err, content) {
+            fs.readFile(path.resolve(program.gamebook || process.cwd(), gamebook.content), function(err, content) {
                 res.end(content+"");
             });
         });
@@ -69,8 +70,14 @@
 
             res.json(monster);
         });
-        app.get('/asset/:filename', function(req, res){
-            fs.createReadStream(path.resolve(program.gamebook || __dirname, '_assets', req.params.filename)).pipe(res);
+        app.get('/asset/:filename', function(req, res) {
+            fs.createReadStream(path.resolve(program.gamebook || process.cwd(), '_assets', req.params.filename)).pipe(res);
+        });
+
+        app.get('/views/:key', function(req, res) {
+            res.render('views/'+req.params.key, {
+                gamebook: gamebook
+            });
         });
 
         app.get('/heroe', function(req, res) {
@@ -80,6 +87,26 @@
             h.maxArmor = h.armor;
 
             res.json(h);
+        });
+
+        app.get('/profiles', function(req, res, next) {
+            fs.readdir(datapath, function(err, files) {
+                if(err) return next(err);
+                return res.json(files);
+            });
+        });
+
+        app.post('/profile/:key', function(req, res) {
+            req.pipe(fs.createWriteStream(path.join(datapath, req.params.key)));
+            res.end();
+        });
+
+        app.get('/profile/:key', function(req, res, next){
+            fs.readFile(path.join(datapath, req.params.key), function(err, data){
+                if(err) return next(err);
+                var profile = JSON.parse(data + "");
+                return res.json(profile);
+            });
         });
 
         server.listen(port, function() {

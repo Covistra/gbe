@@ -1,5 +1,11 @@
 angular.module('gbe', ['gbe.services'])
 
+.config(['$routeProvider', function($routeProvider) {
+    $routeProvider
+        .when('/titlepage',{templateUrl: '/views/titlepage'})
+        .when('/reader',{templateUrl: '/views/reader'});
+}])
+
 .provider('parser', function() {
     return {
         $get: function() {
@@ -8,8 +14,7 @@ angular.module('gbe', ['gbe.services'])
     };
 })
 
-.controller('GameBookCtrl', function($scope, parser, $q, contentService) {
-    var gb;
+.controller('GameBookCtrl', function($scope, parser, $q, contentService, $rootScope) {
 
     $scope.encounter = undefined;
 
@@ -19,19 +24,18 @@ angular.module('gbe', ['gbe.services'])
         return false;
     });
 
-    contentService.loadHeroe().then(function(heroe) {
-        $scope.heroe = new GBE.Heroe(heroe);
-        contentService.loadBook().then(function(book) {
-            contentService.loadContent(book.content).then(function(content) {
-                parser.parse(content, function(err, gamebook) {
-                    gb = gamebook;
+    $scope.heroe = $rootScope.profile.heroe;
+    contentService.loadContent($rootScope.meta.content).then(function(content) {
+        parser.parse(content, function(err, gamebook) {
+            $rootScope.gb = gamebook;
 
-                    // start the book (should display title page here)
-                    $scope.scene = gamebook.startScene();
-                });
-            });
+            // start the book (should display title page here)
+            if($rootScope.profile.currentScene)
+                $scope.scene = $rootScope.gb.getScene($rootScope.profile.currentScene);
+            else
+                $scope.scene = $rootScope.gb.startScene();
+            $scope.scene.activate(onNextScene);
         });
-
     });
 
     $scope.$on('start-encounter', function(e, encounter, scene){
@@ -128,15 +132,9 @@ angular.module('gbe', ['gbe.services'])
                         });
 
                         // Make sure we apply the win outcome if present in this encounter
-                        scene = $scope.scene.encounter.applyOutcome('win', $scope.scene, gb);
+                        scene = $scope.scene.encounter.applyOutcome('win', $scope.scene, $rootScope.gb);
                         if(scene) {
-                            scene.activate(function(scene)  {
-                                $scope.scene = scene;
-
-                                if($scope.scene.encounter) {
-                                    $scope.$emit('start-encounter', $scope.scene.encounter, $scope.scene);
-                                }
-                            });
+                            scene.activate(onNextScene);
                         }
                         else
                             console.log("No scene was provided. Let the user pick a selector");
@@ -145,15 +143,9 @@ angular.module('gbe', ['gbe.services'])
                         $scope.scene.encounter.state = 'lost';
 
                         // Make sure we apply the win outcome if present in this encounter
-                        scene = $scope.scene.encounter.applyOutcome('lost', $scope.scene, gb);
+                        scene = $scope.scene.encounter.applyOutcome('lost', $scope.scene, $rootScope.gb);
                         if(scene) {
-                            scene.activate(function(scene)  {
-                                $scope.scene = scene;
-
-                                if($scope.scene.encounter) {
-                                    $scope.$emit('start-encounter', $scope.scene.encounter, $scope.scene);
-                                }
-                            });
+                            scene.activate(onNextScene);
                         }
                         else
                             console.log("No scene was provided. Let the user pick a selector");
@@ -230,14 +222,8 @@ angular.module('gbe', ['gbe.services'])
     $scope.choose = function(selector) {
         var sceneNo = selector.nextScene();
         if(sceneNo) {
-            var scene = gb.getScene(sceneNo);
-            scene.activate(function(scene){
-                $scope.scene = scene;
-
-                if($scope.scene.encounter) {
-                    $scope.$emit('start-encounter', $scope.scene.encounter, $scope.scene);
-                }
-            });
+            var scene = $rootScope.gb.getScene(sceneNo);
+            scene.activate(onNextScene);
         }
 
     };
@@ -265,10 +251,65 @@ angular.module('gbe', ['gbe.services'])
         });
     };
 
+    function onNextScene (scene){
+        $scope.scene = scene;
+
+        if($scope.scene.encounter) {
+            $scope.$emit('start-encounter', $scope.scene.encounter, $scope.scene);
+        }
+
+        $rootScope.profile.currentScene = scene.no;
+        if(scene.milestone) {
+            $rootScope.profile.progress = scene.milestone;
+        }
+        contentService.saveGameProfile($rootScope.profile);
+    }
+
 })
 
-.run(function($rootScope) {
+.controller('TitlepageCtrl', ['$scope', 'contentService', '$location', '$rootScope', function($scope, contentService, $location, $rootScope) {
+
+    contentService.loadBook().then(function(book) {
+        $rootScope.meta = book;
+        $scope.profiles = contentService.listGameProfiles();
+    });
+
+    $scope.createProfile = function() {
+
+        // Generate a heroe from content
+        contentService.loadHeroe().then(function(heroe) {
+            var profile = {};
+            profile.heroe = new GBE.Heroe(heroe);
+            profile.gamebook = $rootScope.meta.key;
+            profile.artefacts = 0;
+            profile.maxArtefacts = $rootScope.meta.maxArtefacts;
+            profile.progress = 0;
+            profile.date = new Date();
+            profile.currentScene = 1;
+            profile.maxProgress = $rootScope.meta.maxProgress;
+            $rootScope.profile = profile;
+            $location.path("reader");
+        });
+
+    };
+
+    $scope.loadProfile = function(profile) {
+        console.log("Load profile", profile);
+        contentService.loadGameProfile(profile).then(function(profile) {
+            $rootScope.profile = profile;
+            $rootScope.profile.heroe = new GBE.Heroe(profile.heroe);
+            $location.path("reader");
+        }, function(reason) {
+            console.log("Unable to load game profile:", reason);
+        });
+    };
+
+}])
+
+.run(function($rootScope, $location) {
     document.addEventListener('deviceready', function() {
         $rootScope.$broadcast('deviceready');
     }, false);
+
+    $location.path("titlepage");
 });

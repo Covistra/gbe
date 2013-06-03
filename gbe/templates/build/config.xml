@@ -1,12 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.cordova.hellocordova" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HelloCordova</name>
-    <description>
-        A sample Apache Cordova application that responds to the deviceready event.
-    </description>
-    <author email="callback-dev@incubator.apache.org" href="http://cordova.io">
-        Apache Cordova Team
-    </author>
+    <name>{{gamebook.title}}</name>
+    <description>{{gamebook.description}}</description>
+    <author email="{{gamebook.author.email}}" href="{{gamebook.author.website}}">{{gamebook.author.name}}</author>
     <icon height="512" src="res/icon/cordova_512.png" width="512" />
     <icon cdv:platform="android" height="96" src="res/icon/cordova_android_96.png" width="96" />
     <icon cdv:platform="blackberry" height="80" src="res/icon/cordova_bb_80.png" width="80" />
@@ -31,9 +27,10 @@
     <cdv:splash cdv:platform="ios" height="960" src="res/screen/iphone_retina_portrait.png" width="640" />
     <cdv:splash cdv:platform="winphone" height="800" src="res/screen/windows_phone_portrait.jpg" width="480" />
     <feature name="http://api.phonegap.com/1.0/device" />
-    <preference name="phonegap-version" value="1.9.0" />
-    <preference name="orientation" value="default" />
+    <preference name="phonegap-version" value="2.7.0" />
+    <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
-    <preference name="fullscreen" value="false" />
+    <preference name="fullscreen" value="true" />
+    <cdv:plugin name="File" value="CDVFile" />
     <access origin="*" />
 </widget>

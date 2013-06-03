@@ -1,5 +1,6 @@
 angular.module('gbe.services', [], function($provide) {
-    $provide.factory('contentService', ["$http", "$q", function($http, $q) {
+
+    $provide.factory('contentService', ["$http", "$q","$timeout", function($http, $q) {
 
         return new function() {
 
@@ -13,11 +14,41 @@ angular.module('gbe.services', [], function($provide) {
                 return def.promise;
             };
 
-            this.loadContent = function(key) {
+            this.listGameProfiles = function() {
+                console.log("Listing all game profiles");
                 var def = $q.defer();
-                $http.get('/content').then(function(resp){
+                $http.get("/profiles").then(function(resp){
                     def.resolve(resp.data);
-                }, function(reason){
+                });
+                return def.promise;
+            };
+
+            this.saveGameProfile = function(key, profile) {
+                var def = $q.defer();
+                if(arguments.length == 1) {
+                    profile = key;
+                    key = profile.key = profile.key || _.uniqueId(profile.gamebook);
+                }
+
+                $http.post("/profile/"+key, profile).then(function(resp) {
+                    def.resolve(resp.data);
+                });
+                return def.promise;
+            };
+
+            this.loadGameProfile = function(key) {
+                var def = $q.defer();
+                $http.get('/profile/'+key).then(function(resp) {
+                    def.resolve(resp.data);
+                });
+                return def.promise;
+            };
+
+            this.loadContent = function() {
+                var def = $q.defer();
+                $http.get('/content').then(function(resp) {
+                    def.resolve(resp.data);
+                }, function(reason) {
                     def.reject(reason);
                 });
                 return def.promise;

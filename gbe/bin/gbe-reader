@@ -6,6 +6,7 @@ var program = require('commander'),
 program
     .option("-p, --port [port]", "The port at which the reader should be launched. Default to 8080.")
     .option("-g, --gamebook [book]", "The content to display. Either a gbe file or a folder containing the GBE content")
+    .option("-d, --data [datapath]", "A folder where GBE will put data files. Default to the current directory")
     .parse(process.argv);
 
 cmd(program);

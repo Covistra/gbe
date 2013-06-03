@@ -1,5 +1,5 @@
 angular.module('gbe.services', [], function($provide) {
-    $provide.factory('contentService', ["$http", "$q", function($http, $q) {
+    $provide.factory('contentService', ["$http", "$q", function($http, $q, $timeout) {
 
         return new function() {
 
@@ -20,6 +20,31 @@ angular.module('gbe.services', [], function($provide) {
                     def.resolve(resp.data);
                 }, function(reason){
                     def.reject(reason);
+                });
+                return def.promise;
+            };
+
+            this.listGameProfiles = function() {
+                console.log("Listing all game profiles");
+                var def = $q.defer();
+                $timeout(function(){
+                    def.resolve([]);
+                });
+                return def.promise;
+            };
+
+            this.saveGameProfile = function(key, profile) {
+                var def = $q.defer();
+                $timeout(function(){
+                    def.resolve({});
+                });
+                return def.promise;
+            };
+
+            this.loadGameProfile = function(key) {
+                var def = $q.defer();
+                $timeout(function(){
+                    def.resolve({});
                 });
                 return def.promise;
             };
