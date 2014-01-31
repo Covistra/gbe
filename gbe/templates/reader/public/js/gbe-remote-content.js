@@ -6,7 +6,7 @@ angular.module('gbe.services', [], function($provide) {
 
             this.loadBook = function(key) {
                 var def = $q.defer();
-                $http.get('/book').then(function(resp){
+                $http.get('/book').then(function(resp) {
                     def.resolve(resp.data);
                 }, function(reason){
                     def.reject(reason);

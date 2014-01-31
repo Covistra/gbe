@@ -1,0 +1,488 @@
+{Scene:1, start:true, lang:en, rating:E, title:"Background"}
+A deep fog has settled down as you gradually reduce the speed of your car. You have been traveling for over an hour, and the pace has now become intolerably slow. You glance at the time reading on your console- a half hour before midnight. Strange that someone would need a presentation at this hour, your think to yourself. You quickly glance down at the name on the order- Pravemi. It’s odd that you’ve never heard about this name, but then again, you’ve only been employed by your company for a week. The work has been good so far; you’ve averaged six presentations a day and closed the sale on over half of them. So if some eccentric individual wants a presentation at this hour of the night, does it really matter? No sir. If it goes through, then you will have capped off a good week.
+{para}Still, the situation is rather strange. You haven’t seen a house, or any kind of building for that matter, for quite some time.  You turned off your radio miles ago, as static flooded the airwaves.  You estimate that at this rate, by the time you find the location, make your presentation, and get back home, time will have elapsed into the wee hours of the early dawn. Oh well, you think, as the fog begins to clear. Sometimes things just- your thoughts are broken at the sight which greets you as you round the corner. The road narrows into a dirt track, running up a hill; and there, at the top, is the house.  House? Mansion is more appropriate, you think. Although the estate before you looks like it has seen better days, it is extremely impressive. You gaze up at two stories of elegance from a bygone time. This is the kind of place you have seen only in movies. You drive past a stone archway and pause to read an iron plate imbedded on the side: ORVIETO. So this place even has a name.
+{para}You park your car about a hundred feet to the side of the house.  You shut off the engine, lean back in your seat, and yawn. Hopefully this won’t take too long. As you stare at the house, some other odd observations cross your mind, things that you hadn’t noticed before, perhaps due to fatigue. For one, an estate of this size must have at least several occupants; and yet as far as you can make out there are no other vehicles around and definitely no garage.  What’s more, from what you can observe (it is rather dark) there are no power lines in sight. There is light emanating from both floors, however. It doesn’t matter, you think as you lock your door. It makes a sort of sense when pieced together. This estate probably belongs to some hideously wealthy but eccentric old chap, who’s tired of being hit up for money, so he moved out here. I might do the same were I in his shoes. You open the trunk and pull out the two suitcases. As you start to make your way to the house, you are startled by a noise that suddenly breaks the stillness. But it is only a hooting owl. You chuckle to yourself as you slowly make your way to the front door. Little do you know what fate has in store for you. Tonight will be a night to remember…
+{para}You climb up the steps leading to the front door and put down your suitcases. The wind has picked up, and you pause to take a deep breath.
+There is an elaborate knocker in the middle of the door, fashioned in the shape of a gargoyle’s head (as far as you can tell). There is no sign of a bell-pull anywhere, so you rap
+the door three times. The sound is surprisingly loud, and seems to reverberate throughout the house. A few moments later, you hear steps approaching the door
+{Selector: Go(257)}Wait for the door to open{/Selector}
+
+{Scene:11}
+“Bless you,” she responds, beaming at your answer. “Now, this is what you must know. This entire house serves evil, Pravemi being the high priest of the order. To defeat him,
+you must find a very special weapon, which is in a hidden room. You must find the location of this room and the password required to open it. Be on your guard at all times.
+There are supernatural and infernal elements in this house. Not all is evil, however- there are those who would help you”. Her voice begins to fade. “Have courage!” she cries.
+“Be selective of the areas that you choose to explore! Look for the cast--"…she is cut off in mid sentence as she begins to fade away. The door to the room swings open.
+{Block: history:234}
+{para}You suddenly remember that the hooded man entered your room from a secret panel in the wall.
+{Selector: Go(130)}Click here if you wish to locate the panel{/Selector}
+{Selector: Go(378)}If not, you exit the room.{/Selector}
+{/Block}
+{Block: history:!234}
+{Selector: Go(378)}You exit the room.{/Selector}
+{/Block}
+
+{Scene:15, lang:en, rating:E, title:"In the dining room"}
+Both of the pictures were taken in black-and-white.  The first one is of the Count, or someone who looks exactly like him, standing in a room with several other men. They are wearing
+Top hats and dressed in an elegant manner- vests and tails; they are also holding canes. Perhaps some kind of turn-of-the-century costume party? No, they look too authentic.
+At any rate, the look on their faces is far from jovial- they are staring at the camera with cold, stern expressions. Something in their gaze is very disquieting. The other picture is
+of a beautiful young woman with dark hair and light eyes. A small plaque is set at the bottom of the picture containing a message:
+{para}_{Character: Cassandra}: 1904-1923. Your time with me was far too brief, my love._
+{para}Odd. It seems that premature deaths run in the family.
+{Selector: Go(275)}Continue{/Selector}
+
+{Scene:17}
+You throw yourself underneath the bed just as the door begins to open. Underneath it is very dusty and your eyes immediately begin to water, but you cup your hands over your mouth
+and nose and try not to sneeze. Footsteps walk into the room and you can hear a conversation between two men: “…never been to one before. They say that only a few are accepted.”
+“Yes. But I sometimes wonder abut the need to involve outsiders. Remember the raid? Surely, there will be another…” After this, the men speak in hushed tones and you cannot make out
+their conversation. They walk to the center of the room and you can hear the sound of papers being shuffled. They converse for a few more minutes, then walk out of the room.
+By this time you desperately need some fresh air and you start to crawl out from under the bed.
+{Selector: Check(luck, 111, 174)}LUCK TEST! {{value}} - Continue{/Selector}
+
+{Scene:18, lang:en, rating:E, title:"In the dining room"}
+The wine is pale white in color; it tastes somewhat stronger then it looks. The Count asks you about yourself and your job. As you converse with him, you begin to feel somewhat lightheaded and dimwitted. The Count notices and remarks that you look quite tired and that perhaps you should turn in for the evening. You agree, but as you gaze at him you notice a darkness in his features and manner that you did not sense before. You stand up, and the room begins to spin. You retch violently, reaching out to grab the cart, but in the next moment you black out.
+This is just as well, since you will never know what the Count and his minions do to your body! Next time, avoid white wine. Your brief adventure has ended.
+{Selector: DEAD}Restart the Adventure!{/Selector}
+
+{Scene:21, lang:en, rating:E, title:"In your bedroom"}
+You do not sleep well. Strange, disturbing images drift through your mind. You see yourself running in a black background, with hideous screaming sounds all around you.
+Then, there are a man and a woman in white robes, stretching out their arms and beseeching you to listen; although their lips are moving no sounds come out. Then you see yourself again.
+You open a door which only leads to another one; you open this to find still another. The doors only lead to more doors. Finally, you find yourself in the room of a house. There is a body
+hanging from a rope tied around its neck. The rope is attached to a fan spinning around and around…you step forward to find that the body is…yourself!
+{Selector: Go(160)}Continue{/Selector}
+
+{Scene:26}
+How will you reenter the house?
+{Selector: Go(164)}Ahead of you is a dark window that has been propped open.{/Selector}
+{Selector: Go(254)}Around to your right is another window, this one with a light emanating from it{/Selector}
+{Selector: Go(185)}A little to your left is a porch leading up to a door.{/Selector}
+
+{Scene:27}
+The thing looks like…but it can’t be, you think to yourself. Then it leaps off the mantle and scurries up to your feet. You were right after all- this thing looks like, and is, a severed human hand!
+{Effect: increase(fear, 1)}__1 fear point was added__{/Effect}. You stumble back in shock, and the thing leaps at your neck and begins to strangle you!
+{Encounter: Fight, title:"Stringiamano" }
+    {Monster: Stringiamano, count:1, stamina:3, skill:7}
+        {SpecialAttack range:1-6}
+            {Damage case:1-4, stamina:4, max:3, msg:__special damage!__ it has rung your neck doing 4 points of damage!}
+            {Damage case:5-6, stamina:5, skill:3, max:2, msg: __special damage!__ it pokes out one of your eyes. You lost 3 skills and 5 stamina. }
+        {/SpecialAttack}
+    {/Monster}
+    {Outcome Win: Selector: Go(85), You killed the Stringiamano. Continue! }
+    {Outcome Lost: DEAD }
+{/Encounter}
+
+{Scene:30}
+Having defeated your attacker, you drag the body under the table. You quickly search him to find that his vial is still intact. If contains a black liquid.
+You may {Action: add_artefact:black_liquid_vial}slip the vial into your pocket to keep{/Action}, if you wish. If you are in need of a weapon, you may
+{Action: add_weapon:dagger}take his dagger adding 3 to your skill attribute{/Action}.
+{Selector: Go(114)}Will you now leave the room by the door you entered and continue down the passage{/Selector}
+{Selector: Go(182)}Exit from the door that the man entered from{/Selector}
+{Selector: Go(398)}or search the other robes?{/Selector}
+
+{Scene:35, lang:en, rating:E, title:""}
+The brandy is a fine vintage from Firetop distilleries. The Count has decided on the same thing for himself. It is delicious, thick with a hint of sweetness and warm as it goes down.
+The Count asks you about yourself, your family, and your job. In turn he tells you about himself.
+{Selector: Go(100)}Continue{/Selector}
+
+{Scene:49, lang:en, rating:E, title:""}
+You pour yourself some water as you stand by the window, contemplating the situation. Outside, through the gloom, you can make out an open field, with a line of trees in the distance.
+There is also some sort of building a little ways off. It is much smaller than the house. Perhaps a guesthouse? You down the last of the water and replace the glass on the nightstand.
+There is a sudden whispering, windy sort of sound coming from your left. You turn towards it and freeze.
+{Selector: Go(371)}Continue{/Selector}
+
+{Scene:59}
+Without wasting a second, you throw open the door and stumble out, almost running headlong into two men wearing identical black robes. The shock on their faces has barely registered before
+you slam your fist into one; he slumps to the floor senseless. The second man, somewhat younger than the first, quickly pulls out a dagger from beneath his robes. You will have to fight:
+{Encounter: Fight, title:"Acolyte" }
+    {Monster: Acolyte, count:1, stamina:8, skill:7}{/Monster}
+    {Outcome Timeout#5: Selector: Go(79) }
+    {Outcome Win: Selector: Go(225), The acolyte fall senseless on the floor. Continue! }
+    {Outcome Lost: DEAD }
+{/Encounter}
+
+{Scene:74, lang:en, rating:E, title:""}
+“But, my friend,” says the Count, following you to your car. “Please let me atone for this most unfortunate occurrence.” You pop open the trunk and throw your luggage inside. A few drops
+of rain begin to fall. Ignoring the Count’s entreaties, you get into your car and start it up. Or rather, you try to start it up. The engine turns over once, sputters and dies. It seems
+that the long trip has finally done it in. You smile sheepishly at the Count; it appears as though you will have to accept his offer after all.
+{Selector: Go(118)}Continue{/Selector}
+
+{Scene:79}
+While you are in the throes of your fight, you suddenly feel a sharp pain in your leg. You look down to discover the other man, the one you had knocked out, has regained his senses and
+plunged his knife into you! Your brief second of hesitation is all the time your adversary needs to leap forward and plunge his dagger into your heart.
+{Selector: DEAD}Your adventure is over{/Selector}
+
+{Scene:85}
+The ghastly hand lies at your feet and you kick it across the room. You rub your raw throat and examine the room again. There seems to be nothing unusual about the window. The fireplace
+seems normal as well. You are about to examine the desk when you glance back at the hand and notice that the damned thing has begun to twitch and writhe!
+{Selector: Go(176)}Will you risk a cursory examination of the desk{/Selector}
+{Selector: Go(171)}or beat a hasty retreat back out to the hallway?{/Selector}
+
+{Scene:97}
+You move to the center of the room and boldly stand your ground. The steps move closer, and you can hear voices as well. The doorknob turns, and two men in identical
+black robes stride into the room. You remain motionless, and they almost run into you before noticing you are there and drawing back in shock. One look at you is enough to tell them that
+you are an outsider. You demand to know what is going on in the house, but they are uninterested in conversation. One of them silently draws a dagger from underneath his robes and attacks
+you while the other runs out of the room. You are just getting around to dispatching your attacker before the door flies open and six more black-robed men rush in. You cannot hope to defeat
+them all and are quickly overpowered. You are taken to a special holding cell beneath the house where you will be detained until the next feast of the black moon, when you will be sacrificed.
+{Selector: DEAD}Your adventure is over{/Selector}
+
+{Scene:99}
+You walk up to the mirror. It is of an oval, elongated shape. You flip it around once, then examine your reflection. Nothing seems to be out of the ordinary.
+{Selector: Go(270)}Now you may examine the bureau{/Selector}
+{Selector: Go(378)}or leave the room{/Selector}
+
+{Scene:100, lang:en, rating:E, title:"In the dining room"}
+Pravemi, Count of Orvieto, comes from a highly distinguished family that has maintained the estate and its surrounding land for generations. For many years, the family’s income was based on
+agricultural means. Gradually, modernization spread throughout the country, to the point that the farming industry gradually trickled away. When the Count’s daughter unexpectedly passed away
+a few years ago, Pravemi was left as the last surviving member of his family. He has chosen to remain at his residence with a few servants, refusing to sell his land. At that moment, D’Onoffrio
+reappears and whispers something in Pravemi’s ear. The Count begs your pardon and excuses himself, stating that he will return shortly.
+{Selector: Go(134)}Continue{/Selector}
+
+{Scene:111}
+As you start to crawl out, your sleeve catches on one of the bedposts. As you pull it away, there is an almost inaudible click and a gentle clinking sound. A small compartment has opened up and
+released an iron key! You hold it up and see the number “66” engraved into it. {Effect: increase(luck, 1)}__1 luck point was added to your total__{/Effect}.
+{para}{Action: add_artefact:key66}Add the key to your inventory{/Action}
+{Selector: Go(174)} Continue {/Selector}
+
+{Scene:114}
+You follow the tunnel as it winds around to the left. There are fewer candles at this point, and the way gradually becomes darker. You are soon forced to slow down to a very slow pace.
+You begin to contemplate turning around and going back when you suddenly feel a light breeze on your face. Intrigued, you continue ahead.
+{Selector: Go(188)}Continue ahead{/Selector}
+
+{Scene:116}
+The hallway winds to the left ahead of you. On the right, you spot an unmarked door. As you draw nearer, you can hear a sound coming from behind the door. You stop for a moment, puzzled.
+And then it dawns on you – the sound on the other side of the door is that of someone playing a piano! The tune is light and melodic, quite out of place for such an evil house. Under
+normal circumstances, it would not have taken you so long to place it. Now you must decide if
+{Selector: Go(123)}you will silently open the door{/Selector}
+{Selector: Go(224)}or follow the hallway around to the left{/Selector}
+
+{Scene:118, lang:en, rating:E, title:"In the dining room"}
+You follow {Character:Onoffrio} and the {Character:Pravemi|Count} inside, down a long entrance hall beset with beautiful marble statues and a fountain. This leads to a plush dining room,
+where your host bids you to be seated on a velvet divan. {Character:Onoffrio} disappears into another part of the house, but returns shortly, rolling a cart laden with bottles containing
+an assortment of beverages. “Now then, my friend”, beings the {Character:Pravemi|Count}. “Perhaps we can atone for this misunderstanding. As I told you, I am expecting out of town guests,
+and it would be quite an embarrassment to me if I had to tell them that their trip was for nothing! Therefore, I am prepared to compensate you quite handsomely if you could stay the night
+and for a few hours tomorrow.” You nod in agreement as {Character:Onoffrio} offers you a drink. Would you like some:
+{Selector: Go(35)}Brandy?{/Selector}
+{Selector: Go(138)}Port Wine?{/Selector}
+{Selector: Go(277)}Club Soda?{/Selector}
+{Selector: Go(399)}Coffee?{/Selector}
+{Selector: Go(18)}Chablis Wine?{/Selector}
+{Selector: Go(300)}Just some water?{/Selector}
+
+{Scene:122}
+You lay still, taking slow breaths. Faint light filters into the room from the window, and your eyes soon adjust to the dark. You roll over to your right and suddenly spot a figure
+in a dark cloak and a hood standing near the bed. As you stare, it slowly takes a step towards you. Whoever it is, his intentions cannot be good. {Effect: increase(fear, 1)} __You gained 1 Fear point__ {/Effect}. It is time to act.
+You slowly stretch out you arms and yawn, as if in a deep slumber. The figure instantly freezes. Then, in the next instant, you throw the covers back and roll off the to the left.
+There is a whistling sound and an instant later the window shatters. You grab the pitcher off the stand and hurl it across the room. It hits the figure straight on and he staggers back as it
+shatters on the floor. You glance at the door, but no sooner do you contemplate escape than the figure leaps across the bed straight at you. You must defend yourself.
+{Encounter: Fight, title:"Hooded Man" }
+    {Monster: Assailant, count:1, stamina:6, skill:5}
+    {/Monster}
+    {Outcome Win: Selector: Go(225), You defeated the hooded man! }
+    {Outcome Lost: DEAD }
+{/Encounter}
+
+{Scene:130}
+You step back into the room and approach the wall. You run your hands along its smooth face, trying to find the secret door. You tap the wall in several places, to no avail.
+You are about to give up when the panel suddenly slides aside on its own. You peer inside to find a tunnel that disappears into inky blackness.
+{Selector: Go(141)}Will you follow this tunnel{/Selector}
+{Selector: Go(378)}or step into the hallway outside the room?{/Selector}
+
+{Scene:134, title:"In the dining room"}
+You recline back on the divan and survey your surroundings. For all his wealth, Pravemi appears to have shunned modern technology and conveniences. There does not seem to be any sort of electrical
+appliance anywhere. The room you are in at the moment is brightly lit by a large chandelier. The entire setting has an 18th century feel to it. You yawn and stretch out lazily.
+It's been a long trip and you feel drowsy.
+{Selector: Go(275)}Will you remain seated and wait for the Count to return?{/Selector}
+{Selector: Go(15)}Or do you want to look around? If so, there is a glass table nearby with a pair of picture frames on it. You can examine this.{/Selector}
+{Selector: Go(333)}Alternately, you can muse through some books lying on a desk directly behind you.{/Selector}
+
+{Scene:138, lang:en, rating:E, title:"In the dining room"}
+The wine is a deep red color; it tastes slightly tart with a low level of acidity. It is invigorating and delicious! The count notices your reaction and smiles, pleased that you are happy with his stock.
+He asks you about yourself, your job, and your family; he in turn tells you about himself.
+{Selector: Go(100)} Listen to the Count{/Selector}
+
+{Scene:141}
+You step into the tunnel, keeping a hand on the wall to aid your sense of direction. As you proceed, you notice the passageway beginning to slope downwards.
+There is a dim glow in the distance, and as you approach it you can see that is given off by candles mounted into the walls on both sides, spaced apart at intervals of a few meters.
+Eventually, you come to a door set on the right-hand wall. The tunnel continues ahead, winding to the left.
+{Selector: Go(345)}Will you open the door?{/Selector}
+{Selector: Go(114)}or continue along the passage?{/Selector}
+
+{Scene:146}
+You slump to your knees, exhausted after the exertions of the fight. You glance over to the mirror again and notice that it is now completely cracked over its entire surface,
+rendering any image unviewable. You walk over to the bureau and quickly go through the drawers. You find {Action: add_money:gold_coin#3-9} {{amount}} gold coin{/Action} that you may keep if you choose.
+{Selector: Go(378)}Now it's time to move on{/Selector}
+
+{Scene:149, lang:en, rating:E, title:""}
+It's a shame that you didn’t heed the warning you received. You close your eyes and drift off into a deep, peaceful sleep – one that you will never awaken from.
+The evil of the house has claimed another victim.
+{Selector: DEAD}You are dead!{/Selector}
+
+{Scene:155}
+You enter a small bedroom containing an adult sized, gold-backed mirror in the center. There is also a bureau next to the bed. The scene looks harmless enough, but you step warily
+into the room, shutting the door behind you. You pause for a few seconds to consider your options.
+{Selector: Go(99)}Will you inspect the mirror?{/Selector}
+{Selector: Go(270)}the bureau?{/Selector}
+{Selector: Go(378)}or do you want to leave this room?{/Selector}
+
+{Scene:157, lang:en, rating:E, title:""}
+You close your eyes and pull the covers up, hoping to get some peaceful sleep this time.
+{Selector: Check(luck, 370, 149)}LUCK CHECKED! {{value}} - Continue!{/Selector}
+
+{Scene:160, lang:en, rating:E, title:""}
+You awaken in a cold sweat. Your heart is pounding, and you look around wildly before remembering where you are. You take a deep breath and try to calm down. The sound of a light
+rain falling outside faintly reaches your ears. You lean over to the nightstand to check your watch – it is still a few hours before dawn. You lean back on your bed, thinking that perhaps
+the unfamiliar atmosphere has affected you. Yet, you can also sense that it is something more. But what can you do about it?
+{Selector: Go(157)}Will you close your eyes and settle back down to sleep{/Selector}
+{Selector: Go(49)}have a drink of water and stay up for a little while longer{/Selector}
+{Selector: Go(326)}or do you want to get dressed and leave this room{/Selector}
+
+{Scene:171}
+At this point in the hallway there are two more door that face each other. The one on the right is marked STRINGIAMANO while the one on the left is unmarked. Listening closely,
+you think that you can hear a faint sound behind the right hand door. Now decide what to do. Enter a room only if you have yet to do so.
+{Selector: Go(246)}The STRINGIAMANO room?{/Selector}
+{Selector: Go(232)}The unmarked door?{/Selector}
+{Selector: Go(116)}Further ahead, the hallway runs past another door before winding to the left. Click here to go this way{/Selector}
+
+{Scene:174}
+You crawl out from underneath the bed and dust yourself off. You walk over to the closet and quickly glance inside – but just as you suspected, there are only clothes on hangers.
+Nothing unusual that you can make out. Not wanting to waste any more time, you walk over to the door and silently let yourself out.
+{Selector: Go(378)}Continue{/Selector}
+
+{Scene:176}
+You pull the chair back and throw open all of the drawers. Sheets of blank white paper are strewn about, as well as pencils, pens, postage stamps, and – what’s this?
+You lift up a personalized rubber stamp. You can’t quite make out the letters, so you stamp it on a sheet of paper read the work PRAVEMI in bold black ink. As this might prove useful,
+you slip it into your pocket. Meanwhile, the hand is now back on its fingers and starting to scuttle towards you! You rush out of the room and shut the door. A second later, the hand thuds
+against it from the inside. That was close.
+{Selector: Go(171)} Leave the room{/Selector}
+
+{Scene:180}
+You strike your final blow and the figure topples to the ground. Its cowl falls back to reveal a man with pale white skin, thinning hair, and a jutting forehead. You search his
+robes but find nothing; however you {Action: add_weapon:dagger}recover his dagger{/Action}, which you decide to keep as a weapon. You also notice that his arm is branded with a black tattoo
+of a crescent moon. What does this mean? There is a sudden rustling, whispering sort of sound coming from the other side of the room. You turn around.
+{Selector: Go(371)}Continue{/Selector}
+
+{Scene:182}
+The door opens into a long, narrow walkway that winds to the left after a few meters. As you are following this hall, you suddenly hear voices from around the corner.
+You consider running back, but in the next instant four men in black cloaks appear. They immediately stop, almost stumbling over themselves. Their eyes glaze in uncertainty. You have a split
+second to decide whether
+{Selector: Go(290)}to turn and run{/Selector}
+{Selector: Go(268)}or draw your weapon and launch yourself at them.{/Selector}
+
+{Scene:188}
+As you follow the tunnel, the breeze grows stronger. You also notice that the ground is becoming increasingly damp and muddy. A faint light beckons in the distance, and as you continue,
+the moonlight gradually lights up your surroundings. To your dismay, the tunnel ends at a latched gate. On the other side lie the great outdoors.
+{Selector: inventory:key66, 221, 301}You have a key! Let's continue || You don't have a key, click here{/Selector}
+
+{Scene:199}
+You step into a large bedroom. It contains a king-sized bed, neatly made, as well as a window behind some curtains that have been drawn back. Moonlight streams into the room. As you are
+trying to decide on your next course of action, you quickly draw in your breath – there are footsteps approaching from outside the room! Your first instinct is to hide.
+{Selector: Go(220)}Will you nip into the closet{/Selector}
+{Selector: Go(17)}duck under the bed{/Selector}
+{Selector: Go(97)}or instead choose to stand your ground?{/Selector}
+
+{Scene:220}
+You quickly step into the closet and close the door behind you. There is a rack of clothes on hangers and you have to push your way through these to get to the rear of the closet.
+You can hear footsteps walking into the room and the sound of muffled voices. You stand quietly, trying to make out what they are saying, but you cannot. As you stand there, a strange
+feeling comes over you. You hold your breath…and then you hear it…the sound of quiet, raspy breathing. Someone is in this closet with you! Your heart immediately begins to pound.
+{Effect: increase(fear, 1)} __You gained 1 Fear point__ {/Effect}. As you are trying to decide what to do, whoever your companion is takes a step – towards you!
+{Selector: Go(59)}Will you rush outside, not knowing what you might meet{/Selector}
+{Selector: Go(394)}or stay in the closet?{/Selector}
+
+{Scene:225}
+Your attacker reels back after your last blow and falls to the floor, senseless. His cowl had fallen back during the battle, revealing a man with a pale face,
+thinning hair, and a jutting forehead. You search his robes but find nothing of value; however his arm is branded with a black tattoo of a crescent moon. You quickly dress,
+your mind racing to make sense of the situation. You turn towards the door and immediately stop.
+{Selector: Go(371)} Continue {/Selector}
+
+{Scene:232}
+The door is locked.
+{Block: inventory:key66}
+You have an __engraved key #66__ in your pocket.
+{Selector: Go(66)}Try to open the door and enter this room{/Selector}
+{/Block}
+{Block: inventory:!key66}
+{Selector: Go(246)}You can search the Stringiamano room{/Selector}
+{Selector: Go(116)}or continue down the hallway{/Selector}
+{/Block}
+
+{Scene:234}
+You take a deep breath, assume an open stance, and call out to the figure. It seems to go rigid, then turns slowly in your direction. You demand to know who he is and what he wants.
+The figure bows its head for a moment, turns as if to leave, but suddenly pulls out dagger and attacks you! You must fight for your life:
+{Encounter: Fight, title:"Hooded man" }
+    {Monster: Assailant, count:1, stamina:6, skill:5}
+    {/Monster}
+    {Outcome Win: Selector: Go(180), You defeated the hooded man! }
+    {Outcome Lost: DEAD }
+{/Encounter}
+
+{Scene:236}
+You reply that as you are a single person faced with overwhelming odds, you don’t think that you will succeed. You promise to come back with help if you manage to escape the house.
+“Very well,” replies the ghost, bowing her head. The door to the room swings open. “Good luck, stranger,” are her last words before she fades away. You step out of the room.
+{Selector: Go(378)}Step out of the room{/Selector}
+
+{Scene:246}
+You cautiously open the door. There is only silence as you step into a cozy study. You close the door behind you and take in the scene for a moment. An unlit fireplace lies before you,
+and a desk with a chair is to your right. A window is to your left, and a sudden clap of thunder heralds the arrival of a storm. You take a step forward and abruptly stop. There it is again –
+a sort of scurrying, scuttling sound. You wonder if the house is infested with – WHAT IS THAT? Something scuttles across the mantle above the fireplace. You instinctively draw back.
+Whatever it is, it’s moving too fast to get a good view of. It scuttles up the chair, across the desk, up the wall, and down to the mantle again before it finally stops.
+{Selector: Go(27)}Continue{/Selector}
+
+{Scene:253}
+There is something in this man’s expression that you don’t like. A split second later, the glint of metal flashes through the air as he viciously swipes a dagger at you! You jump back in alarm
+as it grazes your arm ({Effect: decrease('stamina', 1)__lost 1 stamina point__{/Effect}) and the man rises with a growl of anger. He is blocking the exit and you must fight to the death.
+{Encounter: Fight, title:"Treacherous man" }
+    {Monster: Assailant, count:1, stamina:11, skill:9}
+    {/Monster}
+    {Outcome Win: Selector: Go(501), You defeated the treacherous man! }
+    {Outcome Lost: DEAD }
+{/Encounter}
+
+{Scene:501}
+You quickly search the treacherous man but find nothing on him. You may {Action: add_weapon:dagger}keep his dagger{/Action} if you want.
+{Selector: Go(233)}If you haven't spoken to one of the others, you may approach the old woman{/Selector}
+{Selector: Go(120)}or the other man{/Selector}
+{Selector: Go(86)}Otherwise, you return to the level above and explore the hallway{/Selector}
+
+{Scene:257, lang:en, rating:E, title:"Welcome to House Orvieto"}
+The door slowly opens, and a youngish looking man with curly brown hair stands before you. You examine each other silently for a few moments “Yes?” he finally asks. “How may I be of service?”
+You inform him that you are here to give the presentation. When he continues to look at you quizzically, you hand him the confirmation slip. As he is examining this, another voice drifts out
+from inside the house. “Who is it, {Character:Onoffrio}?” This sounds like it’s from an older man, and your assumption is confirmed when a tall, middle-aged man walks up to the entrance. He has coal-black eyes,
+a friendly face, and black hair streaked with gray, which he wears slicked back. The young man steps aside. “It is my honor to present {Character:Pravemi}, Count of Orvieto, his most esteemed…” {Character:Pravemi} waves a
+hand and {Character:Onoffrio} falls silent. “Now then, my friend, what may we do for you?” he asks politely. {Character:Onoffrio} hands him the slip and the Count examines it.
+His brow rises in surprise. “My friend, I am afraid there has been an unfortunate misunderstanding.
+We were not expecting you until morning!” You protest, detailing your long trip and general inconvenience. “I understand your frustration, my friend,” replies the Count, “but I am expecting
+visitors early tomorrow, and they must be present as well. Please, come inside and perhaps we can reach a mutually satisfactory settlement.”
+{para}Will you :
+{Selector: Go(118)}Accept his invitation{/Selector}
+{Selector: Go(74)}Walk back to your car in disgust{/Selector}
+
+{Scene:270}
+As you walk over to the bureau, there is a sudden noise behind you. You wheel around, brandishing your weapon (if you have one)…but there is nothing. You glance over to the mirror and your
+heart skips a beat. Your reflection is gone!  Before you can do anything else, you feel a tap on your shoulder. You spin around, to be confronted by an image of yourself! This thing is
+identical to you in every way, save for its blood red eyes and a horrible grin. {Effect: increase(fear, 2)} __You gained 2 Fear point for this shock__ {/Effect}.
+Before you can react, it leaps at you and you must defend yourself.
+{Encounter: Fight, title:"Mirror Image" }
+    {Monster: Assailant, count:1, stamina:7, skill:6}
+    {/Monster}
+    {Outcome Win: Selector: Go(146), You defeated you mirror image! }
+    {Outcome Lost: DEAD }
+{/Encounter}
+{/Encounter}
+
+{Scene:275, lang:en, rating:E, title:""}
+The {Character:Pravemi|Count} walks back into the room from a side hallway. “Once again, I ask for your pardon, my friend.” You assure him that it was no trouble and he smiles
+before glancing down to his watch. “It is late, and in only a few hours you must be up. Onoffrio will show you to your room. Good night.” You thank him again and then follow Onoffrio upstairs.
+The second story of the estate is a vast connection of hallways that are lit at regularly spaced intervals by lamps mounted to the walls. You pass several doors containing brass nameplates.
+At last, you arrive at an unmarked door at the end of a hallway. It leads into a cozy room containing a bed that is made with crisp, satin sheets. A small nightstand is a few feet away containing a
+mirror, a glass, a pitcher of water, and a small tub of ice. Onoffrio bids you good night and closes the door as he leaves. You lay your clothes by the bed and climb underneath the sheets.
+You can hear the sprinkling of rain outside the window as you drift off to sleep.
+{Selector: Go(21)}Continue{/Selector}
+
+{Scene:277, lang:en, rating:E, title:""}
+You relax and settle back comfortably in your chair, sipping your soda, while the Count takes a drink of his brandy. He asks you about yourself, your family, and your job. In turn,
+he tells you about himself.
+{Selector: Go(100)}Continue{/Selector}
+
+{Scene:300, lang:en, rating:E, title:""}
+Onoffrio twists open a bottle of sparkling mineral water and pours it into a glass for you. The Count relaxes with his brandy for a moment, then starts up a conversation. He asks you
+about yourself, your family, and your job. He, in turn, tells you about himself and his family.
+{Selector: Go(100)}Continue{/Selector}
+
+{Scene:301}
+You shake the gate in frustration; it is old and rusty and the hinges are loose. You decide to force it open by charging it.
+{para}{Action: check:skill Make a skill check}
+{Outcome: failure}
+{para}Failed! It takes several attempts to force the gate open and {Effect: decrease(stamina, 2)} __your Stamina has been reduced by 2__.{/Effect}
+{/Outcome}
+{Outcome: success}
+{para}Success! The gate flies open!
+{/Outcome}
+{Outcome: any}
+{para}You walk through the gate and into a light rain. Looking around, you can see the foreboding shape of the house; you seem to be in the rear. A path winds around the estate,
+disappearing into the darkness.
+{Selector: Go(26)}Will you look for a way to reenter the house{/Selector}
+{Selector: Go(374)}or make your way around the front, back to your car{/Selector}
+{/Outcome}
+{/Action}
+
+{Scene:324}
+You suddenly remember that the man entered your room from a secret panel in the wall.
+{Selector: Go(130)}Click here if you wish to locate this{/Selector}
+{Selector: Go(378)}If not, you exit the room.{/Selector}
+
+{Scene:326, lang:en, rating:E, title:""}
+You quickly dress and walk over to the door. You wonder if anyone else is up – but either way you plan to explore for a while. Something about this house seems odd, and you are determined
+to investigate. But a shock awaits you when grasp the doorknob: the room is locked! It seems as though your host isn’t keen on having his guests prowl around.
+{Selector: Go(49)}Will you pour yourself some water and think about the situation{/Selector}
+{Selector: Go(157)}undress and climb back into bed{/Selector}
+{Selector: Go(191)}or attempt to break out of the room{/Selector}?
+
+{Scene:333, lang:en, rating:E, title:""}
+The books are set in a plain black binding. They are written in a strange, unfamiliar language, somewhat similar to Latin, as far as you can tell. Flipping through the pages, you spot several
+disturbing illustrations – faceless beings, writhing on the ground as if in great pain; an opened box with a whirlpool of ghastly clawed things (demons?) springing out; and one of a robed man
+holding a star shaped crystal that seems to be shooting out a bolt of searing light straight at a group of hideous and evil looking beings standing nearby. You wonder what these books are about.
+The sound of approaching voices reaches your ears. You quickly replace the books and take your seat.
+{Selector: Go(275)}Continue{/Selector}
+
+{Scene:345}
+The door is unlocked and opens into a small room with a wooden floor and a table. Another door lies straight ahead. To your left are several black cloaks hanging by hooks set into the wall.
+You are trying to decide what to do next when the door opposite is flung open and a short, middle-aged man with sandy blonde hair enters the room. He is obviously preoccupied with some matter of
+great importance; in his haste he fails to even notice you at first as he rummages through one of the cloaks. With a satisfied chuckle, he pulls out a vial from one of the pockets and slips it into
+his own. He then begins to don one of the other robes when he notices you. He jumps back as if he’d seen a ghost. “Who are you?” he rasps, eyes blazing. At your hesitant reply, he suddenly pulls out
+a dagger and attacks you. Resolve the fight:
+{Encounter: Fight, title:"Unknown Assailant" }
+    {Monster: Assailant, count:1, stamina:8, skill:6}
+    {/Monster}
+    {Outcome Win: Selector: Go(30), You defeated an unknown assailant! }
+    {Outcome Lost: DEAD }
+{/Encounter}
+
+{Scene:370, lang:en, rating:E, title:""}
+Just as you begin drifting off to sleep, your eyes pop open. Were you imagining things? No – you can faintly hear a sliding sound, as if a closet door was being closed.
+You lay very still, concentrating on any sound that you can detect. There is only silence for a few minutes…and then you hear a slight creak of the floorboards.
+Someone is in the room! The thought is rather disconcerting. {Effect: increase(fear, 1)} __You gained 1 Fear point__ {/Effect}.
+{Selector: Go(122)}Will you remain silent?{/Selector}
+{Selector: Go(234)}or suddenly leap out of bed, assume a defensive position, and call out to the intruder?{/Selector}
+
+{Scene:371, lang:en, title:"Ghostly apparition"}
+A shimmering blue light is slowly brightening the center of the room. Within the light, the features of a middle-aged woman are slowly taking shape. She is dressed in a
+white robe and has light hair and ghostly blue eyes with no pupils. As the light fades, the apparition comes into focus. You never believed in ghosts – until now.
+The situation is very unnerving. {Effect: increase(fear, 2)} __You gained 2 Fear point__ {/Effect}. She examines you solemnly for a few moments, as if sizing you up.
+“Stranger,” she begins, in a voice that sounds like the rustle of leaves, “you are in a cursed, unholy, evil place. Pravemi, your host, has welcomed you into his home,
+but little do you know of the evil in his heart. This house consumes all of those unfortunate enough to find themselves within these walls. We are powerless to destroy it,
+but one such as yourself, with what little aid we may provide, might succeed. Will you help?”
+{Selector: Go(11)}Will you, out of the goodness of your heart, agree to help?{/Selector}
+{Selector: Go(236)}or are you happy enough to escape the house with your life?{/Selector}
+
+{Scene:374}
+You’ve had quite enough of this place. Without looking back, you follow the path straight up to your car. Relieved that it remains where you parked it, you slump into the
+seat and twist the key in the ignition. The engine sputters…once, twice, and then roars to life. You release the clutch and stomp on the accelerator. Clouds of mud are shot
+back as you screech away. What an evil place, you think to yourself. Someone else can be the hero. I’m going home… Something rises out of the back seat and grabs you. Your car flies
+off the road and tumbles into a ditch. You are never seen or heard from again.
+{Selector: DEAD}You're dead!{/Selector}
+
+{Scene:378}
+You are standing in the hallway. To your left is a door labeled SPECCHIO ACCESE. An unmarked door stands to your right. The hall continues ahead. Enter a room only if you not yet searched it.
+{Selector: Go(155)}Will you enter the door marked Specchio Accese?{/Selector}
+{Selector: Go(199)}the unmarked door?{/Selector}
+{Selector: Go(171)}or continue down the hall?{/Selector}
+
+{Scene:394}
+You back up until you reach the wall. You stand completely still and breathe very slowly, listening for any sound that might identify your companion. A creak in the floorboards confirms
+that the inhabitant has taken another step in your direction. Suddenly, without warning, a reeking, decaying, nauseating stench hits you like a wave. You clap your hand over your mouth in disgust,
+while suddenly remembering that you have a lighter in your pocket. You quickly fish it out as the floor creaks again. Holding it up at eye-level, you flick the catch. In the flickering light,
+you can make out the features of the person standing a few feet away…
+{Selector: Go(204)}Continue{/Selector}
+
+{Scene:398}
+You quickly pat the robes down, searching for anything useful. In one, you find a {Action: add_money:pearl#1}large and valuable looking pearl, which you may keep{/Action}. You are just
+getting around to searching the last cloak when the opposite door begins to open! Not knowing what else to do, you throw on the cloak and turn away. “Father,” a man’s voice calls out,
+“the congregation awaits.” You nod and slip the hood over your head. You turn around to see a short man in a black frock holding open the door. You walk out into a narrow hall and he follows you.
+{Selector: Go(153)}Continue{/Selector}
+
+{Scene:399, lang:en, rating:E, title:""}
+The coffee is dark and aromatic, rich with a slight sweetness. You detect a trace of alcohol; perhaps D’Onoffrio added a little something extra? Nevertheless, it is deep and
+satisfying and you sip it down slowly. The Count asks you about yourself, your job, and your family. In turn, he tells you about himself.
+{Selector: Go(100)}Continue{/Selector}
+
+{Scene:500, end:true}
+Your adventure ends here. May be its better this way!

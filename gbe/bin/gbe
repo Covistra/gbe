@@ -7,8 +7,8 @@
  */
 var program = require('commander');
 
-console.log("Vibes Tools");
-console.log("(c) 2013 Vibes.IO. All rights reserved");
+console.log("Gamebook Engine");
+console.log("(c) 2014 Covistra Technologies Inc. All rights reserved");
 console.log();
 
 program

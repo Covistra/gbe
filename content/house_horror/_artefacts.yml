@@ -1,0 +1,15 @@
+black_liquid_vial:
+  key: black_liquid_vial
+  name: Black Liquid Vial
+gold_coin:
+  key: gold_coin
+  name: Gold coins
+gem:
+  key: gem
+  name: Gems
+key66:
+  key: key66
+  name: Key with 66 engraved
+pearl:
+  key: pearl
+  name: Large Pearl

@@ -1,0 +1,12 @@
+help section: explain the rules
+system: should be implemented in javascript and used everywhere in all scenes. We should abstract the system to avoid hardcoding skills and random dynamics. The system should be specified when building the gamebook. 
+
+- Add a note section
+- Add a map drawing section
+
+
+first book: let's do it manually. 
+
+House of Horror - Gamebook
+
+Create artist work for all characters and creatures

@@ -51,7 +51,6 @@ html, body {
 }
 
 .book > .content {
-    height: 540px;
     padding:10px;
     overflow-y: auto;
 }
@@ -71,6 +70,10 @@ ul.actions > li {
 }
 
 .book > .location {
+    font-weight:bold;
+}
+
+.book > .character {
     font-weight:bold;
 }
 
@@ -100,7 +103,7 @@ ul.actions > li {
 
 .book > p {
     text-align: justify;
-    font-size:120%;
+    font-size:125%;
 }
 
 #encounter {
@@ -225,4 +228,12 @@ ul.actions > li {
     text-align:center;
     color: #eee;
     font-size:9pt;
+}
+
+.progress span{
+    display: block;
+    position: absolute;
+    width: 90%;
+    color: black;
+    font-weight:bold;
 }

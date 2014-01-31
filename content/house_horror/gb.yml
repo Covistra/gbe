@@ -1,0 +1,16 @@
+gamebook:
+  key: house_horror
+  title: House Of Horror
+  author: Gaetano Abbondanza
+  revision: 1
+  year: 2014
+  copyright: Joel Grenon. All rights reserved
+  content: content.gbook
+  monsters: _monsters.yml
+  characters: _characters.yml
+  weapons: _weapons.yml
+  artefacts: _artefacts.yml
+  heroe: _heroe.yml
+  maxProgress: 10
+  maxArtefacts: 5
+

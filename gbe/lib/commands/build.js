@@ -184,7 +184,7 @@
             }],
             build_app:['phonegap', 'zip_app', function(callback, data){
                 if(!program.local) {
-                    console.log("Sending the zip file to Phoengap build", data.zip_app);
+                    console.log("Sending the zip file to Phonegap build", data.zip_app);
                     var options = {
                         form: {
                             data: {

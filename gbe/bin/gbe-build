@@ -8,6 +8,7 @@ program
     .option("-d, --destination [path]", "The folder where the application code will be generated")
     .option("-t, --token [token]", "The Phonegap Build token to build your app")
     .option("-l, --local [local]", "Only generate application files without sending them to Phonegap build")
+    .option("-a, --assets", "Generate all application assets automatically from data in the gb.yml file")
     .parse(process.argv);
 
 cmd(program);

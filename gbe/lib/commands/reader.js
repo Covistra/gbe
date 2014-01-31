@@ -35,6 +35,9 @@
         var gamebook = require(path.resolve(program.gamebook || process.cwd(), "gb.yml")).gamebook;
         var monsters = require(path.resolve(program.gamebook || process.cwd(), gamebook.monsters));
         var heroe = require(path.resolve(program.gamebook || process.cwd(), gamebook.heroe)).heroe;
+        var weapons = require(path.resolve(program.gamebook || process.cwd(), gamebook.weapons));
+        var artefacts = require(path.resolve(program.gamebook || process.cwd(), gamebook.artefacts));
+        var characters = require(path.resolve(program.gamebook || process.cwd(), gamebook.characters));
         var datapath = program.data || process.cwd();
 
         var app = express();
@@ -52,7 +55,11 @@
         });
 
         app.get('/book', function(req, res){
-            res.json(gamebook);
+            res.json(_.extend(gamebook, {
+                weapons: weapons,
+                characters:characters,
+                artefacts:artefacts
+            }));
         });
 
         app.get("/content", function(req, res){

@@ -1,0 +1,17 @@
+heroe:
+  attributes:
+    - key: stamina
+      score: 7-12
+    - key: luck
+      score: 7-12
+    - key: skill
+      score: 4-9
+    - key: fear
+      score: 0
+  skills:
+  attacks:
+    -
+      key: bare_hand
+      name: Bare Hands
+      hit: -2
+      dmg: 2

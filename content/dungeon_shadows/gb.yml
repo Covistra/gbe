@@ -1,0 +1,16 @@
+gamebook:
+  key: beyond_shadows
+  title: Beyond the Shadows
+  author: Joel Grenon
+  revision: 1
+  year: 2013
+  copyright: Joel Grenon. All rights reserved
+  content: content.gbook
+  monsters: _monsters.yml
+  heroe: _heroe.yml
+  weapons: _weapons.yml
+  characters: _characters.yml
+  artefacts: _artefacts.yml
+  maxProgress: 10
+  maxArtefacts: 5
+

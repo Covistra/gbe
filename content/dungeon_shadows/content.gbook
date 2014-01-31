@@ -1,0 +1,17 @@
+{Scene:1,start:true}
+The thing looks like…but it can’t be, you think to yourself. Then it leaps off the mantle and scurries up to your feet. You were right after all- this thing looks like, and is, a severed human hand!
+{Effect: increase(fear, 1)}__1 fear point was added__ {/Effect}. You stumble back in shock, and the thing leaps at your neck and begins to strangle you!
+{Encounter: Fight, title:"Stringiamano" }
+    {Monster: Stringiamano, count:1, stamina:3, skill:7}
+        {SpecialAttack range:1-6}
+            {Damage case:1-4, stamina:4, max:3, msg:__special damage!__ it has rung your neck doing 4 points of damage!}
+            {Damage case:5-6, stamina:5, skill:3, max:2, msg: __special damage!__ it pokes out one of your eyes. You lost 3 skills and 5 stamina. }
+        {/SpecialAttack}
+        {Treasure: gold:3-9, gems:1-4}
+    {/Monster}
+    {Outcome Win: Selector: Go(85), The Stringiamano is dead. Continue! }
+    {Outcome Lost: DEAD }
+{/Encounter}
+
+{Scene:85}
+Test
