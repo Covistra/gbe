@@ -2,3 +2,7 @@ dagger:
   key: dagger
   name: Dagger
   skill_bonus: 3
+large_knife:
+  key: large_knife
+  name: Large Knife
+  skill_bonus: 2

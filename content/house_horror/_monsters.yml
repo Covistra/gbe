@@ -1,18 +1,20 @@
 Assailant:
-  skills:
   attributes:
     skill: 8
     stamina: 10
   image: unknown.jpg
 Acolyte:
-  skills:
   attributes:
     skill: 8
     stamina: 10
   image: unknown.jpg
 Stringiamano:
-  skills:
   attributes:
     skill: 8
     stamina: 10
+  image: unknown.jpg
+HeadlessCorpse:
+  attributes:
+    skill: 7
+    stamina: 7
   image: unknown.jpg

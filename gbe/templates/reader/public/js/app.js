@@ -389,11 +389,17 @@ angular.module('gbe', ['gbe.services'])
     $scope.choose = function(selector) {
         var sceneNo = selector.nextScene();
         if(sceneNo) {
-            var scene = $rootScope.gb.getScene(sceneNo);
-            if(scene)
-                scene.activate($scope.heroe, onNextScene);
-            else
-                console.log("No scene #%d was found in gamebook content", sceneNo);
+            if(sceneNo == -1) {
+                console.log("Restarting the adventure");
+                $rootScope.$emit('restart');
+            }
+            else {
+                var scene = $rootScope.gb.getScene(sceneNo);
+                if(scene)
+                    scene.activate($scope.heroe, onNextScene);
+                else
+                    console.log("No scene #%d was found in gamebook content", sceneNo);
+            }
         }
 
     };

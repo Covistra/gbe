@@ -25,7 +25,7 @@
     var express = require('express'),
         http = require('http'),
         path = require('path'),
-        fs = require('fs'),
+        fs = require('fs-extra'),
         _ = require('underscore'),
         spawn = require('child_process').spawn;
 
@@ -54,7 +54,7 @@
             });
         });
 
-        app.get('/book', function(req, res){
+        app.get('/book', function(req, res) {
             res.json(_.extend(gamebook, {
                 weapons: weapons,
                 characters:characters,
@@ -64,6 +64,7 @@
 
         app.get("/content", function(req, res){
             fs.readFile(path.resolve(program.gamebook || process.cwd(), gamebook.content), function(err, content) {
+                console.log(content+"");
                 res.end(content+"");
             });
         });
@@ -104,11 +105,13 @@
         });
 
         app.post('/profile/:key', function(req, res) {
-            req.pipe(fs.createWriteStream(path.join(datapath, req.params.key)));
-            res.end();
+            fs.mkdirs(datapath, function(err){
+                req.pipe(fs.createWriteStream(path.join(datapath, req.params.key)));
+                res.end();
+            });
         });
 
-        app.get('/profile/:key', function(req, res, next){
+        app.get('/profile/:key', function(req, res, next) {
             fs.readFile(path.join(datapath, req.params.key), function(err, data){
                 if(err) return next(err);
                 var profile = JSON.parse(data + "");

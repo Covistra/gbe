@@ -13,3 +13,14 @@ key66:
 pearl:
   key: pearl
   name: Large Pearl
+pravemi_stamped_paper:
+  key: pravemi_stamped_paper
+  name: Pravemi Stamped Paper
+water_shot:
+  key: water_shot
+  name: Water
+  effect: increase(stamina, 3)
+  constraint: nocombat
+lock_picks:
+  key: lock_picks
+  name: Lick Picks

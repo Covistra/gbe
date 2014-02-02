@@ -41,7 +41,7 @@ By this time you desperately need some fresh air and you start to crawl out from
 {Scene:18, lang:en, rating:E, title:"In the dining room"}
 The wine is pale white in color; it tastes somewhat stronger then it looks. The Count asks you about yourself and your job. As you converse with him, you begin to feel somewhat lightheaded and dimwitted. The Count notices and remarks that you look quite tired and that perhaps you should turn in for the evening. You agree, but as you gaze at him you notice a darkness in his features and manner that you did not sense before. You stand up, and the room begins to spin. You retch violently, reaching out to grab the cart, but in the next moment you black out.
 This is just as well, since you will never know what the Count and his minions do to your body! Next time, avoid white wine. Your brief adventure has ended.
-{Selector: DEAD}Restart the Adventure!{/Selector}
+{Selector: DEAD}You're dead!{/Selector}
 
 {Scene:21, lang:en, rating:E, title:"In your bedroom"}
 You do not sleep well. Strange, disturbing images drift through your mind. You see yourself running in a black background, with hideous screaming sounds all around you.
@@ -49,6 +49,36 @@ Then, there are a man and a woman in white robes, stretching out their arms and 
 You open a door which only leads to another one; you open this to find still another. The doors only lead to more doors. Finally, you find yourself in the room of a house. There is a body
 hanging from a rope tied around its neck. The rope is attached to a fan spinning around and around…you step forward to find that the body is…yourself!
 {Selector: Go(160)}Continue{/Selector}
+
+{Scene:22}
+After a few seconds, the playing begins again, only this time the notes are completely off key, as if a small child was banging on the keys at random. You are trying to decide what to do next
+when a cat, coal black with aqua blue eyes, jumps over the top and lands on the floor in front of you. It gazes deeply into your eyes for a moment before bounding to the door and scratching
+the surface. A glance around the room tells you that there is nothing here to search through. You open the door and the cat races down the hallway ahead and out of sight.
+{Selector: Go(224)}Continue{/Selector}
+
+{Scene:23}
+The door is locked.
+{Block: inventory:key66}
+{Selector: Go(132)}Use your engraved iron key?{/Selector}
+{/Block}
+{Selector: Go(144)}You may use your lock picks to open the door{/Selector}
+{Selector: Go(385)}You can try the LUPOUOMO room{/Selector}
+{Selector: Go(172)}Continue down the hallway{/Selector}
+{Selector: Go(150)}Go back to where the landing splits{/Selector}
+
+{Scene:25}
+You quickly pat the body down. There is absolutely nothing to be found on it. You glance back up to the face and suddenly the eyes flick open! You stifle a scream and pull back.
+{Effect: increase(fear, 2)}__2 Fear point were added__{/Effect}. The “body” sits straight up and fixes you with a hideous gaze. The eyes are wide open and blazing with hellfire.
+You run to the door to find that it is locked. “Maledetto” the corpse snarls. “Curse you!” It stands up and steps out of the box. Then, incredibly, it pulls off its own head
+and flings it at you! You duck and an instant later it smashes into the door and rolls up to your feet. The ghastly thing is bleeding profusely from its nose, but its eyes are still
+staring at you. “Curse you, curse you! Rot in hell!” it cries, and then tries to bite your foot. This is too much. Add another fear point. You kick the head and it goes flying across
+the room and rebounds off the wall. You look up to see the headless corpse shambling towards you.
+{Encounter: Fight, title:"Headless Corpse" }
+    {Monster: HeadlessCorpse, count:1, stamina:7, skill:7}
+    {/Monster}
+    {Outcome Win: Selector: Go(161), You killed the Headless corpse. Continue! }
+    {Outcome Lost: DEAD }
+{/Encounter}
 
 {Scene:26}
 How will you reenter the house?
@@ -78,6 +108,14 @@ You may {Action: add_artefact:black_liquid_vial}slip the vial into your pocket t
 {Selector: Go(182)}Exit from the door that the man entered from{/Selector}
 {Selector: Go(398)}or search the other robes?{/Selector}
 
+{Scene:34}
+You slowly open the door and peer inside. The room contains a bed, neatly made; a chest, a desk with a lighted candelabrum, and a door to the side that you guess is a closet.
+{Selector: Go(335)If you’d like to ignore this room and continue down the hall{/Selector}
+{Selector: Go(307})otherwise you can enter and investigate the bed{/Selector}
+{Selector: Go(61)} enter and investigate the chest{/Selector}
+{Selector: Go(109) enter and investigate the desk{/Selector}
+{Selector: Go(2)} enter and investigate the door{/Selector}
+
 {Scene:35, lang:en, rating:E, title:""}
 The brandy is a fine vintage from Firetop distilleries. The Count has decided on the same thing for himself. It is delicious, thick with a hint of sweetness and warm as it goes down.
 The Count asks you about yourself, your family, and your job. In turn he tells you about himself.
@@ -89,6 +127,14 @@ There is also some sort of building a little ways off. It is much smaller than t
 There is a sudden whispering, windy sort of sound coming from your left. You turn towards it and freeze.
 {Selector: Go(371)}Continue{/Selector}
 
+{Scene:55}
+You are standing in the middle of the hallway between 2 doors. The door to your left is unmarked. The other door is labeled LUPOUOMO.
+{para}Will you:
+{Selector: Go(23)}Try the unmarked door{/Selector}
+{Selector: Go(385)}the other door{/Selector}
+{Selector: Go(150)}go back to where the landing splits{/Selector}
+{Selector: Go(172)}continue down the hallway{/Selector}
+
 {Scene:59}
 Without wasting a second, you throw open the door and stumble out, almost running headlong into two men wearing identical black robes. The shock on their faces has barely registered before
 you slam your fist into one; he slumps to the floor senseless. The second man, somewhat younger than the first, quickly pulls out a dagger from beneath his robes. You will have to fight:
@@ -99,11 +145,22 @@ you slam your fist into one; he slumps to the floor senseless. The second man, s
     {Outcome Lost: DEAD }
 {/Encounter}
 
+{Scene:66}
+You try inserting the key in the lock, but it doesn’t fit.Choose another option:
+{Selector: Go(246)}You can search the Stringiamano room{/Selector}
+{Selector: Go(116)}or continue down the hallway{/Selector}
+
 {Scene:74, lang:en, rating:E, title:""}
 “But, my friend,” says the Count, following you to your car. “Please let me atone for this most unfortunate occurrence.” You pop open the trunk and throw your luggage inside. A few drops
 of rain begin to fall. Ignoring the Count’s entreaties, you get into your car and start it up. Or rather, you try to start it up. The engine turns over once, sputters and dies. It seems
 that the long trip has finally done it in. You smile sheepishly at the Count; it appears as though you will have to accept his offer after all.
 {Selector: Go(118)}Continue{/Selector}
+
+{Scene:75}
+You step into the room, quietly close the door behind you, and take a deep breath. Gathering your courage, you call out a friendly greeting. The playing abruptly stops. Silence.
+After a few moments, you call out again, apologizing for your intrusion, stating that you have no ill intentions towards the player. Again, silence. You start to feel nervous.
+What have you gotten yourself into? {Effect: increase(fear, 1)}__You gained 1 fear point__{/Effect}.
+{Selector: Go(22)}Continue{/Selector}
 
 {Scene:79}
 While you are in the throes of your fight, you suddenly feel a sharp pain in your leg. You look down to discover the other man, the one you had knocked out, has regained his senses and
@@ -136,6 +193,20 @@ a few years ago, Pravemi was left as the last surviving member of his family. He
 reappears and whispers something in Pravemi’s ear. The Count begs your pardon and excuses himself, stating that he will return shortly.
 {Selector: Go(134)}Continue{/Selector}
 
+{Scene:103}
+You cautiously open the door and look in. In the center of the room, a flickering lamp on a wooden table gives off a dim light. At the rear of the room is a long wooden box – a coffin? Other
+than this, the room is bare.
+{Selector: Go(310)}You can walk in and investigate the box{/Selector}
+{Selector: Go(207)}Or close the door and continue on{/Selector}.
+
+{Scene:107}
+You slowly open the door. To avoid startling the children, you gently knock on the door as they look up. “Oh, hello,” says the boy, as if expecting you. “Won’t you come in? Move over, Anna.”
+“Hello!” Anna greets you, her blue eyes beaming. She seems delighted to see you. She has curly, light brown hair and is wearing a bright blue dress. “Aldo and I never get visitors!
+Won’t you sit down? May I offer you a drink?” She stands up and makes a great show as if admitting you into a grand dining room. You politely refuse, and sit down on the rug next to them.
+Aldo, wearing a blue sailor’s outfit, moves over to make room. Both children stare at you eagerly, as if you had a present for them. Somewhat at a loss, you ask them how they are doing and
+inquire about their favorite games to play. They reply that they are doing well and enjoy hopscotch, playacting, and storytelling.
+{Selector: Go(272)}Continue{/Selector}
+
 {Scene:111}
 As you start to crawl out, your sleeve catches on one of the bedposts. As you pull it away, there is an almost inaudible click and a gentle clinking sound. A small compartment has opened up and
 released an iron key! You hold it up and see the number “66” engraved into it. {Effect: increase(luck, 1)}__1 luck point was added to your total__{/Effect}.
@@ -146,6 +217,12 @@ released an iron key! You hold it up and see the number “66” engraved into i
 You follow the tunnel as it winds around to the left. There are fewer candles at this point, and the way gradually becomes darker. You are soon forced to slow down to a very slow pace.
 You begin to contemplate turning around and going back when you suddenly feel a light breeze on your face. Intrigued, you continue ahead.
 {Selector: Go(188)}Continue ahead{/Selector}
+
+{Scene:115}
+As the hall bends to the left, you see that there is a door to your immediate right, labeled TIFOSO STRANO. There is another door a little further ahead on the left. The hallway continues for a little while before winding left.
+{para}Will you ?
+{Selector: Go(147)}Enter the TIFOSO STRANO room {/Selector}
+{Selector: Go(166)}Continue down the hall, towards the other door{/Selector}
 
 {Scene:116}
 The hallway winds to the left ahead of you. On the right, you spot an unmarked door. As you draw nearer, you can hear a sound coming from behind the door. You stop for a moment, puzzled.
@@ -180,11 +257,26 @@ shatters on the floor. You glance at the door, but no sooner do you contemplate 
     {Outcome Lost: DEAD }
 {/Encounter}
 
+{Scene:123}
+You slip the door open a crack and peer inside. The room you gaze into is rather small. The piano is directly in your sight but whoever is playing it is on the other side and obstructed
+from your view.
+{Selector: Go(288)}Will you creep into the room{/Selector}
+{Selector: Go(75)}Step into the room and clear your throat{/Selector}
+{Selector: Go(224)}Or close the door and continue around the corner{/Selector}
+
 {Scene:130}
 You step back into the room and approach the wall. You run your hands along its smooth face, trying to find the secret door. You tap the wall in several places, to no avail.
 You are about to give up when the panel suddenly slides aside on its own. You peer inside to find a tunnel that disappears into inky blackness.
 {Selector: Go(141)}Will you follow this tunnel{/Selector}
 {Selector: Go(378)}or step into the hallway outside the room?{/Selector}
+
+{Scene:132}
+You insert the key into the lock and it turns. You slowly open the door and look inside. The room is dimly lit by a gas lamp resting on a wooden table. The only things of note are a painting
+of what seems to be a castle, hanging on the wall; and a long and narrow ceramic vase placed on the floor on the other side of the room. As far as you can guess, this is some kind of storeroom
+for extra furniture; but then why lock it?
+{Selector: Go(227)}You can investigate the painting{/Selector}
+{Selector: Go(3)}the vase{/Selector}
+{Selector: Go(206)}simply close the door to this room and decide on another course of action{/Selector}
 
 {Scene:134, title:"In the dining room"}
 You recline back on the divan and survey your surroundings. For all his wealth, Pravemi appears to have shunned modern technology and conveniences. There does not seem to be any sort of electrical
@@ -206,15 +298,24 @@ Eventually, you come to a door set on the right-hand wall. The tunnel continues 
 {Selector: Go(345)}Will you open the door?{/Selector}
 {Selector: Go(114)}or continue along the passage?{/Selector}
 
+{Scene:144}
+When you pull out the lock picks, a ghost suddenly appears in front of you. "There is one thing that we absolutely cannot stand," it informs you, "and that is a cheater." With that,
+it whisks you back to wherever you found the lock picks, which certainly isn't anywhere in this adventure.
+
 {Scene:146}
 You slump to your knees, exhausted after the exertions of the fight. You glance over to the mirror again and notice that it is now completely cracked over its entire surface,
 rendering any image unviewable. You walk over to the bureau and quickly go through the drawers. You find {Action: add_money:gold_coin#3-9} {{amount}} gold coin{/Action} that you may keep if you choose.
 {Selector: Go(378)}Now it's time to move on{/Selector}
 
-{Scene:149, lang:en, rating:E, title:""}
+{Scene:149}
 It's a shame that you didn’t heed the warning you received. You close your eyes and drift off into a deep, peaceful sleep – one that you will never awaken from.
 The evil of the house has claimed another victim.
 {Selector: DEAD}You are dead!{/Selector}
+
+{Scene:150}
+At this point, the hall splits into a t-junction. To your left, a new passage runs past a couple of doors before bending right.
+{Selector: Go(55)}Follow this passage{/Selector}
+{Selector: Go(262)}To your right, the hallways runs past a single door before curving left. To head in this direction click here{/Selector}
 
 {Scene:155}
 You enter a small bedroom containing an adult sized, gold-backed mirror in the center. There is also a bureau next to the bed. The scene looks harmless enough, but you step warily
@@ -235,12 +336,22 @@ the unfamiliar atmosphere has affected you. Yet, you can also sense that it is s
 {Selector: Go(49)}have a drink of water and stay up for a little while longer{/Selector}
 {Selector: Go(326)}or do you want to get dressed and leave this room{/Selector}
 
+{Scene:161}
+You dispatch the corpse and turn back to the door. It looks like you may have to break it down. However, when you try the handle again, it is unlocked! Very strange.
+{Selector: Go(207)}You leave the evil and terrifying room behind.{/Selector}
+
 {Scene:171}
 At this point in the hallway there are two more door that face each other. The one on the right is marked STRINGIAMANO while the one on the left is unmarked. Listening closely,
 you think that you can hear a faint sound behind the right hand door. Now decide what to do. Enter a room only if you have yet to do so.
 {Selector: Go(246)}The STRINGIAMANO room?{/Selector}
 {Selector: Go(232)}The unmarked door?{/Selector}
 {Selector: Go(116)}Further ahead, the hallway runs past another door before winding to the left. Click here to go this way{/Selector}
+
+{Scene:172}
+As you round the corner of the hallway you see that there is a single door to your left marked DIAVOLERIA. Beyond this, the hallway continues for several more meters before branching left.
+{para}Will you:
+{Selector: Go(34)}Investigate the DIAVOLERIA room{/Selector}
+{Selector: Go(335)}Or continue down the hall{/Selector}
 
 {Scene:174}
 You crawl out from underneath the bed and dust yourself off. You walk over to the closet and quickly glance inside – but just as you suspected, there are only clothes on hangers.
@@ -250,7 +361,7 @@ Nothing unusual that you can make out. Not wanting to waste any more time, you w
 {Scene:176}
 You pull the chair back and throw open all of the drawers. Sheets of blank white paper are strewn about, as well as pencils, pens, postage stamps, and – what’s this?
 You lift up a personalized rubber stamp. You can’t quite make out the letters, so you stamp it on a sheet of paper read the work PRAVEMI in bold black ink. As this might prove useful,
-you slip it into your pocket. Meanwhile, the hand is now back on its fingers and starting to scuttle towards you! You rush out of the room and shut the door. A second later, the hand thuds
+you may {Action: add_artefact:pravemi_stamped_paper}slip it into your pocket{/Action}. Meanwhile, the hand is now back on its fingers and starting to scuttle towards you! You rush out of the room and shut the door. A second later, the hand thuds
 against it from the inside. That was close.
 {Selector: Go(171)} Leave the room{/Selector}
 
@@ -272,12 +383,23 @@ As you follow the tunnel, the breeze grows stronger. You also notice that the gr
 the moonlight gradually lights up your surroundings. To your dismay, the tunnel ends at a latched gate. On the other side lie the great outdoors.
 {Selector: inventory:key66, 221, 301}You have a key! Let's continue || You don't have a key, click here{/Selector}
 
+{Scene:192}
+He draws his final breath and expires. In their black smocks, the two men could almost pass for priests, you grimly think to yourself. Searching their bloodstained cloaks,
+you discover only a gold chain necklace inset with a red ruby stone. You may take this if you wish. If you are in need of a weapon, you may also take a dagger. You drag the bodies
+under the bed and exit the room.
+{Selector:Go(378)}Continue{/Selector}
+
 {Scene:199}
 You step into a large bedroom. It contains a king-sized bed, neatly made, as well as a window behind some curtains that have been drawn back. Moonlight streams into the room. As you are
 trying to decide on your next course of action, you quickly draw in your breath – there are footsteps approaching from outside the room! Your first instinct is to hide.
 {Selector: Go(220)}Will you nip into the closet{/Selector}
 {Selector: Go(17)}duck under the bed{/Selector}
 {Selector: Go(97)}or instead choose to stand your ground?{/Selector}
+
+{Scene:207}
+Leaving the Maledetto room behind, you soon reach an unmarked door to your left. Further ahead, the hallway branches off to your left and right.
+{Selector: Go(244)}Will you open the unmarked door{/Selector}
+{Selector: Go(150)}Or continue down the hall to where it splits{/Selector}
 
 {Scene:220}
 You quickly step into the closet and close the door behind you. There is a rack of clothes on hangers and you have to push your way through these to get to the rear of the closet.
@@ -286,6 +408,12 @@ feeling comes over you. You hold your breath…and then you hear it…the sound 
 {Effect: increase(fear, 1)} __You gained 1 Fear point__ {/Effect}. As you are trying to decide what to do, whoever your companion is takes a step – towards you!
 {Selector: Go(59)}Will you rush outside, not knowing what you might meet{/Selector}
 {Selector: Go(394)}or stay in the closet?{/Selector}
+
+{Scene:224}
+The hallway winds around to the left. Following it, you notice a door to your right. The nameplate is inscribed with the word MALEDETTO. Ahead of you, there is a door on the left
+and the hall continues until it reaches a wall, with further passages to the left and right.
+{Selector: Go(103)}Will you enter the Maledetto room{/Selector}
+{Selector: Go(207)}Or continue down the hall{/Selector}
 
 {Scene:225}
 Your attacker reels back after your last blow and falls to the floor, senseless. His cowl had fallen back during the battle, revealing a man with a pale face,
@@ -299,10 +427,8 @@ The door is locked.
 You have an __engraved key #66__ in your pocket.
 {Selector: Go(66)}Try to open the door and enter this room{/Selector}
 {/Block}
-{Block: inventory:!key66}
 {Selector: Go(246)}You can search the Stringiamano room{/Selector}
 {Selector: Go(116)}or continue down the hallway{/Selector}
-{/Block}
 
 {Scene:234}
 You take a deep breath, assume an open stance, and call out to the figure. It seems to go rigid, then turns slowly in your direction. You demand to know who he is and what he wants.
@@ -318,6 +444,14 @@ The figure bows its head for a moment, turns as if to leave, but suddenly pulls 
 You reply that as you are a single person faced with overwhelming odds, you don’t think that you will succeed. You promise to come back with help if you manage to escape the house.
 “Very well,” replies the ghost, bowing her head. The door to the room swings open. “Good luck, stranger,” are her last words before she fades away. You step out of the room.
 {Selector: Go(378)}Step out of the room{/Selector}
+
+{Scene:244}
+The door opens up into some kind of storeroom. Drawers, shelves, and cabinets line the walls. You decide to search the room in the hope of finding something useful. The drawers contain
+forks, spoons, and other silverware. You do find a rather {Action: add_weapon:large_knife}large knife{/Action}, which you may keep as a weapon if you are in need of one. Inside a cabinet
+you find several unopened plastic bottles of water. As you are feeling very parched, you decide {Effect: increase(stamina, 3)}to swig some down. It is very refreshing; __3 Stamina points were added__{/Effect}.
+You also find an old but clean plastic canteen, which you may fill with water and {Action: add_artefact:water_shot#2}clip to your belt{/Action}. It will hold enough water for 2 good drinks, each one restoring 3 Stamina points.
+You may take a drink at anytime except during a combat. Happy with your finds, you leave the room and continue down the hall.
+{Selector: Go(150)}Continue{/Selector}
 
 {Scene:246}
 You cautiously open the door. There is only silence as you step into a cozy study. You close the door behind you and take in the scene for a moment. An unlit fireplace lies before you,
@@ -342,6 +476,14 @@ You quickly search the treacherous man but find nothing on him. You may {Action:
 {Selector: Go(120)}or the other man{/Selector}
 {Selector: Go(86)}Otherwise, you return to the level above and explore the hallway{/Selector}
 
+{Scene:255}
+The tunnel slopes at a downward angle. You walk slowly, wary towards any possible dangers in the inky blackness. Eventually, a faint glow comes into focus. The tunnel levels
+out and you now see that torches are mounted on the walls at regular intervals. After about a hundred feet, a side tunnel appears, branching off to your left. This new tunnel is shrouded in
+darkness, while the tunnel you have been following continues straight ahead.
+{para} Will you:
+{Selector: Go(350)}Take this new branch{/Selector}
+{Selector: Go(319)}Or continue in the direction you were going{/Selector}
+
 {Scene:257, lang:en, rating:E, title:"Welcome to House Orvieto"}
 The door slowly opens, and a youngish looking man with curly brown hair stands before you. You examine each other silently for a few moments “Yes?” he finally asks. “How may I be of service?”
 You inform him that you are here to give the presentation. When he continues to look at you quizzically, you hand him the confirmation slip. As he is examining this, another voice drifts out
@@ -355,6 +497,16 @@ visitors early tomorrow, and they must be present as well. Please, come inside a
 {Selector: Go(118)}Accept his invitation{/Selector}
 {Selector: Go(74)}Walk back to your car in disgust{/Selector}
 
+{Scene:262}
+Turning to your right, you walk up to the door to find that it is marked BAMBINI. You place your ear up against it and can faintly make out a pair of high-pitched voices that seem to
+be giggling and laughing. Curious, you open the door a crack and peer inside. The room contains a bed, a table, and a closet lined with a mirror. Several candelabrums stand on the table,
+providing a glow strong enough to illuminate the entire area. In the center of the room, on a rug, two children sit together. The boy and girl are laughing while they play with some
+cloth dolls.
+{para}Will you:
+{Selector: Go(107)}Make your presence known{/Selector}
+{Selector: Go(115)}Close the door and follow the hall as it bends left{/Selector}
+{Selector: Go(150)}Go back to where the landing splits{/Selector}
+
 {Scene:270}
 As you walk over to the bureau, there is a sudden noise behind you. You wheel around, brandishing your weapon (if you have one)…but there is nothing. You glance over to the mirror and your
 heart skips a beat. Your reflection is gone!  Before you can do anything else, you feel a tap on your shoulder. You spin around, to be confronted by an image of yourself! This thing is
@@ -366,9 +518,8 @@ Before you can react, it leaps at you and you must defend yourself.
     {Outcome Win: Selector: Go(146), You defeated you mirror image! }
     {Outcome Lost: DEAD }
 {/Encounter}
-{/Encounter}
 
-{Scene:275, lang:en, rating:E, title:""}
+{Scene:275}
 The {Character:Pravemi|Count} walks back into the room from a side hallway. “Once again, I ask for your pardon, my friend.” You assure him that it was no trouble and he smiles
 before glancing down to his watch. “It is late, and in only a few hours you must be up. Onoffrio will show you to your room. Good night.” You thank him again and then follow Onoffrio upstairs.
 The second story of the estate is a vast connection of hallways that are lit at regularly spaced intervals by lamps mounted to the walls. You pass several doors containing brass nameplates.
@@ -377,12 +528,24 @@ mirror, a glass, a pitcher of water, and a small tub of ice. Onoffrio bids you g
 You can hear the sprinkling of rain outside the window as you drift off to sleep.
 {Selector: Go(21)}Continue{/Selector}
 
-{Scene:277, lang:en, rating:E, title:""}
+{Scene:277}
 You relax and settle back comfortably in your chair, sipping your soda, while the Count takes a drink of his brandy. He asks you about yourself, your family, and your job. In turn,
 he tells you about himself.
 {Selector: Go(100)}Continue{/Selector}
 
-{Scene:300, lang:en, rating:E, title:""}
+{Scene:285}
+The man makes no reply regarding your inquiries. He merely continues to stare at you with a look of burning hatred. You become a little unnerved and demand that he speak up or forfeit
+his life. At this, his eyes narrow and a faint smile reaches his lips. “You are doomed, stranger,” he whispers. “The master will repay you for your transgressions. And I shall collect my reward now!”
+Before you can react, he draws his free hand across his neck. Blood immediately begins to gush out. You step back in disgust as his hand flops to the ground, revealing a small pocket blade hidden
+in his palm. You shake your head in disbelief.
+{Selector: Go(192)}Continue{/Selector}
+
+{Scene:288}
+You cautiously step into the room, holding your breath. Ever so slowly, you close the door behind you. Now that you are in the room, you can see that it contains only the piano, a divan,
+and a window. You slowly step towards the piano, hoping to get a view of the player. You are only a few feet away when one of the floorboards creeks. The playing abruptly stops.
+{Selector: Go(22)}Continue{/Selector}
+
+{Scene:300}
 Onoffrio twists open a bottle of sparkling mineral water and pours it into a glass for you. The Count relaxes with his brandy for a moment, then starts up a conversation. He asks you
 about yourself, your family, and your job. He, in turn, tells you about himself and his family.
 {Selector: Go(100)}Continue{/Selector}
@@ -404,24 +567,44 @@ disappearing into the darkness.
 {/Outcome}
 {/Action}
 
+{Scene:310}
+You slowly walk over to the box. Taking a deep breath, you bend down and flip back the lid. Inside is a man dressed in a dark suit. He has straight, light colored hair; his eyes are
+closed and his skin is a pale hue. Dead! However, you were half expecting something like this and so you aren’t particularly shocked or frightened. But why keep a body in a room like this?
+{Selector: Go(25)}Will you search the body{/Selector}
+{Selector: Go(207}Close the lid and leave{/Selector}
+
+{Scene:319}
+You have been following the lighted tunnel for several meters when it takes a sharp turn to the right. You follow the turn and immediately stop when you are confronted – oddly enough –
+with a gate, which bars your way. Before you even know what to think of this, a harsh voice barks out to you from the other side: “What is your business here at this hour?” Stunned,
+you offer no reply. The voice calls out again: “If you have a reason to be here, then you know the process. What color is Orion’s belt?” You are left to ponder this strange question
+and can only conclude that it is some kind of code. Do you know the answer to this question? If you do, take each letter of the word that is your answer and convert it into a number
+using the code A=1, B=2, …Z=26. Add all of these values up, then take this new number, double it.
+{Selector: Capture(80,332)}Enter the  result top continue{/Selector}
+
 {Scene:324}
 You suddenly remember that the man entered your room from a secret panel in the wall.
 {Selector: Go(130)}Click here if you wish to locate this{/Selector}
 {Selector: Go(378)}If not, you exit the room.{/Selector}
 
-{Scene:326, lang:en, rating:E, title:""}
+{Scene:326}
 You quickly dress and walk over to the door. You wonder if anyone else is up – but either way you plan to explore for a while. Something about this house seems odd, and you are determined
 to investigate. But a shock awaits you when grasp the doorknob: the room is locked! It seems as though your host isn’t keen on having his guests prowl around.
 {Selector: Go(49)}Will you pour yourself some water and think about the situation{/Selector}
 {Selector: Go(157)}undress and climb back into bed{/Selector}
 {Selector: Go(191)}or attempt to break out of the room{/Selector}?
 
-{Scene:333, lang:en, rating:E, title:""}
+{Scene:333}
 The books are set in a plain black binding. They are written in a strange, unfamiliar language, somewhat similar to Latin, as far as you can tell. Flipping through the pages, you spot several
 disturbing illustrations – faceless beings, writhing on the ground as if in great pain; an opened box with a whirlpool of ghastly clawed things (demons?) springing out; and one of a robed man
 holding a star shaped crystal that seems to be shooting out a bolt of searing light straight at a group of hideous and evil looking beings standing nearby. You wonder what these books are about.
 The sound of approaching voices reaches your ears. You quickly replace the books and take your seat.
 {Selector: Go(275)}Continue{/Selector}
+
+{Scene:335}
+Leaving the Diavoleria room behind, you follow the hall as it rounds a corner and turns left. As you make the turn, you suddenly notice a door that you had not seen before on the wall
+to your right. It is unmarked. You place your ear up against it, but there is only silence. {para}Will you :
+{Selector: Go(263)}Enter this room{/Selector}
+{Selector: Go(186)}Or continue around the corner{/Selector}
 
 {Scene:345}
 The door is unlocked and opens into a small room with a wooden floor and a table. Another door lies straight ahead. To your left are several black cloaks hanging by hooks set into the wall.
@@ -436,7 +619,15 @@ a dagger and attacks you. Resolve the fight:
     {Outcome Lost: DEAD }
 {/Encounter}
 
-{Scene:370, lang:en, rating:E, title:""}
+{Scene:350}
+Once again, you find yourself in pitch-blackness. The sound of your footsteps trudging on the dirt floor seems unnaturally loud in the dead stillness. You begin wondering if this tunnel
+leads anywhere when a dim, flickering glow in the distance catches your attention. As you continue ahead, you see that the tunnel ends at a closed wooden door. A single candle mounted on the wall
+provides the source of the light. Having come this far, you decide to open the door. Turning the knob, you find that it is unlocked; however you have to exert strong pressure to push the door open.
+The hinges creek as it slowly slides inward. The interior reveals a small room with bones strewn across the ground and little else, which you find rather puzzling.
+{Selector: Go(314)}Do you wish to enter this room to investigate{/Selector}
+{Selector: Go(54)}head back along the tunnel{/Selector}
+
+{Scene:370}
 Just as you begin drifting off to sleep, your eyes pop open. Were you imagining things? No – you can faintly hear a sliding sound, as if a closet door was being closed.
 You lay very still, concentrating on any sound that you can detect. There is only silence for a few minutes…and then you hear a slight creak of the floorboards.
 Someone is in the room! The thought is rather disconcerting. {Effect: increase(fear, 1)} __You gained 1 Fear point__ {/Effect}.
@@ -466,6 +657,12 @@ You are standing in the hallway. To your left is a door labeled SPECCHIO ACCESE.
 {Selector: Go(199)}the unmarked door?{/Selector}
 {Selector: Go(171)}or continue down the hall?{/Selector}
 
+{Scene:385}
+You open the door of the Lupouomo room to find a man sitting in front of a desk, writing by lamplight. The only other objects in the room are a bed and a window that has been
+propped open, letting in a cool breeze. He looks up at you and you immediately tense up, but relax when he smiles. “Well hello, hello,” he greets you cheerfully. “Come on in, yes,
+there’s a good chap.” He seems friendly enough (although you resolve not to let your guard down) so you decide to enter the room with the hope of picking up some information from him.
+{Selector: Go(56)}Enter{/Selector}
+
 {Scene:394}
 You back up until you reach the wall. You stand completely still and breathe very slowly, listening for any sound that might identify your companion. A creak in the floorboards confirms
 that the inhabitant has taken another step in your direction. Suddenly, without warning, a reeking, decaying, nauseating stench hits you like a wave. You clap your hand over your mouth in disgust,
@@ -486,3 +683,5 @@ satisfying and you sip it down slowly. The Count asks you about yourself, your j
 
 {Scene:500, end:true}
 Your adventure ends here. May be its better this way!
+{Selector: TITLEPAGE}Back to titlepage{/Selector}
+

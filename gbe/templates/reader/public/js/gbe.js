@@ -681,6 +681,10 @@
                         return gamebook.endScene().no;
                     }
                 }
+                else if(this.expr.toLowerCase() === 'titlepage') {
+                    return -1;
+                }
+
                 return null;
             };
         },

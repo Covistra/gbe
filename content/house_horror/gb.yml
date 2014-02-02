@@ -1,4 +1,4 @@
-gamebook:
+gamebook: 
   key: house_horror
   title: House Of Horror
   author: Gaetano Abbondanza
@@ -13,4 +13,11 @@ gamebook:
   heroe: _heroe.yml
   maxProgress: 10
   maxArtefacts: 5
-
+  app: 
+    id: com.covitra.gamebook.HouseOfHorror
+    title: House Of Horror
+    author: 
+      name: Covistra Technologies Inc.
+      email: "gamebook@covistra.com"
+      website: "http://www.covistra.com/gamebooks/hh"
+  build_id: 760091
