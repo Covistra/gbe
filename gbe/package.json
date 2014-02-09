@@ -1,10 +1,16 @@
 {
-  "name": "gamebook-engine",
+  "name": "gbe",
   "version": "0.2.0",
   "license": "GPL-3.0",
+  "description": "Gamebook Engine is a command line utility to create tablet ebooks where the reader can change the story based on its actions and choices",
+  "keywords":["gamebook", "engine", "adventure", "fantasy", "ebook", "tablet", "mobile", "app", "phonegap"],
+  "repository":{
+      "type":"git",
+      "url": "https://github.com/Covistra/gbe.git"
+  },
   "author":{
       "name": "Joel Grenon",
-      "email": "joelgrenon@covistra.com",
+      "email": "joelgrenon@gmail.com",
       "url" : "https://www.github.com/jgrenon"
   },
   "bin":{
@@ -25,5 +31,8 @@
     "request": "~2.21.0",
     "wrench": "~1.5.1",
     "archiver": "~0.4.3"
+  },
+  "engines" : {
+      "node" : ">=0.10.3 < 0.12"
   }
 }
