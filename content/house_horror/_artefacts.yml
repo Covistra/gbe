@@ -24,3 +24,12 @@ water_shot:
 lock_picks:
   key: lock_picks
   name: Lick Picks
+whiskey:
+  key: whiskey
+  name: Whiskey
+  effect: decrease(fear, 1)
+  constraint: nocombat
+hazrukiel:
+  key: hazrukiel
+  name: Spirit Hazrukiel
+  effect: win_encounter

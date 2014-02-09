@@ -7,6 +7,101 @@ There is an elaborate knocker in the middle of the door, fashioned in the shape 
 the door three times. The sound is surprisingly loud, and seems to reverberate throughout the house. A few moments later, you hear steps approaching the door
 {Selector: Go(257)}Wait for the door to open{/Selector}
 
+{Scene:2}
+You walk up to the door and pull it open. Sure enough, it is a closet, but before you have time to investigate, a headless corpse stumbles out! {Effect: increase(fear, 2)}__2 Fear points were added__{/Effect}.
+It is wearing a brown suit and dark loafers. It stumbles straight into you, bounces off and begins crawling along the floor. When it reaches the chest, it begins to feel it up and down,
+as if searching for a way to open it. It appears to get frustrated or desperate as it begins to pound the chest with its hands. After a few moments, it gets on its feet, shuffles back to the closet,
+steps inside and slams the door shut.
+{Selector: Go(61)}Do you want to open the chest{/Selector}
+{Selector: Go(307)Examine the bed{/Selector}
+{Selector: Go(109)}Investigate the desk{/Selector}
+{Selector: Go(208)}Leave this room{/Selector}
+
+{Scene:3}
+The vase seems real enough, and when you shake it you can hear a rattling sound. You turn it upside-down, but nothing falls out!
+{para}Will you
+{Selector: Go(195)}Probe into the vase with your hand{/Selector}
+{Selector: Go(206)}or, if that doesn’t seem like a good idea, leave the room{/Selector}
+{Selector: Go(227)}If you have not studied the painting, you may do so on{/Selector}
+
+{Scene:4}
+You slump to the ground in exhaustion, then suddenly remember the woman and sit up. You find that she is on her feet, having removed the ruby ring, and watch silently as she flings it
+away with all her might. Wiping her hair away from her face, she turns to you and smiles sweetly. “Thank you, stranger,” she begins in a soft voice. “I am the lady Margaret of Danvers, and
+while my fate was sealed long ago, at least I may now rest in peace.” You slowly get to your feet and explain how you arrived in this land. “Yes”, she replies, “there is evil enchantment at work,
+and I fear that you will have more travails and dangers to face.” She turns in the direction of the castle. “Your way back lies through there,” she intones, “but beware of the armor!
+There is also information that you seek. The crone, Grisela, may be able to aid you. You will know her by the rose colored scarf that she wears. But time grows short. You must be off.”
+Before you leave, Margaret informs you that in her gratitude, she will reward you with a blessing. {para}Will you ask for
+{Selector: Go(313)}a blessing of strength{/Selector}
+{Selector: Go(154)}a blessing of courage{/Selector}
+{Selector: Go(235)}or a blessing of fortune{/Selector}
+
+{Scene:5}
+As you walk around the wall, you see that you are in a very spacious chamber. You seem to be standing on a platform, with a dais in the center. Steps lead off the platform to the ground,
+and you can see two sets of pews running almost fifty feet back. They are full of figures in black robes, who slowly raise their heads as you enter. But what has your attention most of all
+is the figure of a young woman tied to the dais. She is wearing a simple white robe. Her eyes are open but her breathing is shallow. It dawns on you that you are in the place of the high priest,
+and unless you have an incredible stroke of luck or divine intervention, you will soon be discovered. The congregation stares up at you expectantly, and the gravity of the situation hits
+you {Effect: increase(fear, 1)}__1 fear point was added__{/Effect}. You force yourself to think. Looking down at the dais, you see that beside the body of the young woman there is a
+black chalice, a dagger, a set of candles, and a rolled up parchment.
+{para}Will you
+{Selector: Go(184)}light the candles{/Selector}
+{Selector: Go(325)}unroll the parchment{/Selector}
+{Block: inventory:black_liquid_vial}
+{Selector: Go(137) __You have a vial__: Pour the black liquid of the vial into the chalice{/Selector}
+{/Block}
+{Selector: Go(197)Raise the dagger{/Selector}
+{Selector: Go(36)}Wait for something to happen{/Selector}
+
+{Scene:6}
+The man does not hear you as you stride right up to him, but furrows his brow, as if disturbed. You clear your throat, and when there is still no reaction, you gently tap his shoulder.
+His eyes slowly open and he stares at the ground a few seconds, then slowly lifts his gaze towards you. His green eyes gleam with an unspeakable hatred, and then he suddenly opens his mouth
+to reveal dripping, unholy jaws. There are few things you could do that would be worse than disturbing a hungry vampire! {Effect: increase(fear, 2)}__2 fear points were added{/Effect}.
+{para}_After each round, roll a die. If you roll a 1, the Vampire grows tired of playing with you and simply orders you to kill yourself, which you have no choice but to do.
+{Encounter: Fight, title:"Vampire"}
+    {Monster: Vampire, count:1, stamina:14, skill:14}
+        {SpecialAttack range:1-6}
+            {Damage case:1, kill:true, msg:__special damage!__ the Vampire grows tired of playing with you and simply orders you to kill yourself, which you have no choice but to do!}
+        {/SpecialAttack}
+    {/Monster}
+    {Outcome Check(monster.stamina <= 4): Selector: Go(143) }
+    {Outcome Lost: DEAD }
+{/Encounter}
+
+{Scene:7}
+“Passwords?” He asks. Yes, they can get rather tedious, especially since they change so often. Of course, you have to be in good favor with the Count to even know any in the first place,
+you see.” You nod in agreement, your mind racing for a way to get him to disclose more information without arousing his suspicion. You take a deep breath while casting your eyes down and
+shaking your head. When he asks you what is wrong, you tell him how embarrassed you feel to have already forgotten a password that you received a couple of days ago. He sympathizes with you,
+telling you how bad his own memory is and how he usually has to write down new information. When you tell him that the password you need is the one that accesses Pravemi’s most revered item,
+his eyes open wide. “Well, you certainly are in a bind, my friend. Fortunately, I too am one of the selected few that maintains the Count’s confidence. The word you seek is, of course, memnoch.
+You nod your head in mock recognition and thank him.
+{Selector: Go(175)}Continue{/Selector}
+
+{Scene:8}
+Fortunately, the throw is a little wide and the knife thuds into the door. The figure curses in a raspy voice before rushing at you a second later and you must defend yourself.
+{Encounter: Fight, title:"Assailant" }
+    {Monster: Assailant, count:1, stamina:10, skill:8}{/Monster}
+    {Outcome Win: Selector: Go(180), You killed your assailant. Continue! }
+    {Outcome Lost: DEAD }
+{/Encounter}
+
+{Scene:9}
+“Really? No one that you have seen compares to me?” he asks, lighting up. You assure him that his work is breathtaking, and that Pravemi is a lucky man to have such a qualified scientist.
+“Oh, please, stop, that is too much”, he gushes. He is so pleased with you that he disappears into his private room for a moment and then comes back with a pint of whiskey that he offers to you.
+You thank his generosity and promise to come back and visit him soon. He waves farewell, and as he stands at his door, watching you, you have no choice but to walk back up the tunnel to the closet.
+{Action add_artefact:whiskey#3}The whiskey may prove handy{/Action}, however. There is enough for three good swigs and you may drink at any time except when you are in combat or otherwise engaged (talking to someone, running for your life, etc.)
+Each time you drink, you may subtract 1 fear point.
+{Selector: Go(182)}Continue{/Selector}
+
+{Scene:10}
+You recite the strange incantation, taking care to repeat it ten times. As you finish, a ghostly white figure shimmers out of thin air a few feet in front of you. It is dressed from head to
+foot in a hooded white cloak. It stares at you passively, then nods and flicks out of existence, but not before mentally imparting a message to you that you will have its aid at some point
+in the future, should you need it. {Effect: increase(luck, 2)}__2 Luck points were added__{/Effect}. The spirit’s name is Hazrukiel - {Action: add_artefact:hazrukiel}add it to your character now{/Action}.  At some point in your adventure,
+you may be asked if you would like to summon someone or something to your defense. In this case, you may call the spirit to your aid by following the instructions you will be given. Alternately,
+you many summon Hazrukiel to your aid without any special instructions; if you choose to do this during a battle then you will automatically win that battle without losing any Stamina points.
+Whichever option you choose, you can only call on Hazrukiel once in the entire adventure, so use him wisely. Now, you may
+{Selector: Go(121)}Examine the book of local history{/Selector}
+{Selector: Go(203)}The book on witchcraft{/Selector}
+{Selector: Go(186)}Or leave the room{/Selector}
+
 {Scene:11}
 “Bless you,” she responds, beaming at your answer. “Now, this is what you must know. This entire house serves evil, Pravemi being the high priest of the order. To defeat him,
 you must find a very special weapon, which is in a hidden room. You must find the location of this room and the password required to open it. Be on your guard at all times.
@@ -20,6 +115,24 @@ There are supernatural and infernal elements in this house. Not all is evil, how
 {Block: history:!234}
 {Selector: Go(378)}You exit the room.{/Selector}
 {/Block}
+
+{Scene:12}
+You walk up to the painting. It is very detailed- a great house stands in a nighttime setting. Oddly enough, you make out an automobile parked in front of a closed gate. You suddenly
+realize that it is your car and that you are staring at Orvieto! You stare at the painting, but nothing seems to happen. When you break your gaze, you suddenly realize that you are back in
+the room through which you discovered the painting that led to wherever you just were. Feeling somewhat strange, you look around to see that everything remains as it was. {para}Will you
+{Selector: Go(206)}Exit the room{/Selector}
+{Selector: Go(3}Or investigate the vase if you haven’t yet done so {/Selector}
+
+{Scene:13}
+Back on the other side of the alcove, you shed your cloak and run back around the corner, through the changing room and out into the tunnel. {para}Will you
+{Selector: Go(114)}follow the tunnel forward{/Selector}
+{Selector: Go(397)}Or back up to the bedroom{/Selector}
+
+{Scene:14}
+You fall to the ground, the spinning in your head continuing as if you were free falling and spinning all at once. You clutch your head in agony, but eventually the sensation subsides.
+You sit up and see that everything is as it was before. You slowly get to your feet while deciding what to do next.
+{Selector: Go(3)}You can investigate the vase, having not already done so{/Selector}
+{Selector: Go(206)}Or leave this room {/Selector}
 
 {Scene:15, lang:en, rating:E, title:"In the dining room"}
 Both of the pictures were taken in black-and-white.  The first one is of the Count, or someone who looks exactly like him, standing in a room with several other men. They are wearing
@@ -126,6 +239,11 @@ You pour yourself some water as you stand by the window, contemplating the situa
 There is also some sort of building a little ways off. It is much smaller than the house. Perhaps a guesthouse? You down the last of the water and replace the glass on the nightstand.
 There is a sudden whispering, windy sort of sound coming from your left. You turn towards it and freeze.
 {Selector: Go(371)}Continue{/Selector}
+
+{Scene:54}
+You leave the room of bones behind. How did you come to be here, underneath the house?
+{Selector: Go(330)}By finding a secret passageway{/Selector}
+{Selector: Go(83)}Or by falling through a trapdoor {/Selector}
 
 {Scene:55}
 You are standing in the middle of the hallway between 2 doors. The door to your left is unmarked. The other door is labeled LUPOUOMO.
@@ -306,6 +424,8 @@ it whisks you back to wherever you found the lock picks, which certainly isn't a
 You slump to your knees, exhausted after the exertions of the fight. You glance over to the mirror again and notice that it is now completely cracked over its entire surface,
 rendering any image unviewable. You walk over to the bureau and quickly go through the drawers. You find {Action: add_money:gold_coin#3-9} {{amount}} gold coin{/Action} that you may keep if you choose.
 {Selector: Go(378)}Now it's time to move on{/Selector}
+
+{Scene:147}
 
 {Scene:149}
 It's a shame that you didn’t heed the warning you received. You close your eyes and drift off into a deep, peaceful sleep – one that you will never awaken from.
@@ -519,6 +639,14 @@ Before you can react, it leaps at you and you must defend yourself.
     {Outcome Lost: DEAD }
 {/Encounter}
 
+{Scene:272}
+You gradually steer the conversation over to the house. Who do they live with? Who takes care of them? Where do they go and whom do they visit outside the house? They seem puzzled
+by your questions. “Story time!” interrupts Aldo. “House rules. You’re the visitor, so you go first.” “Oh yes, please,” exclaims Anna, clapping her hands in glee and looking at
+you excitedly. “I love stories.” If you decide that you are wasting time here,
+{Selector: Go(115)}you can leave the children and continue down the hallways as it bears to the left{/Selector}
+{Selector: Go(150)}Or you may go back to the split in the landing {/Selector}.
+{Selector: Go(308)}If you decide to humor them{/Selector}
+
 {Scene:275}
 The {Character:Pravemi|Count} walks back into the room from a side hallway. “Once again, I ask for your pardon, my friend.” You assure him that it was no trouble and he smiles
 before glancing down to his watch. “It is late, and in only a few hours you must be up. Onoffrio will show you to your room. Good night.” You thank him again and then follow Onoffrio upstairs.
@@ -572,6 +700,11 @@ You slowly walk over to the box. Taking a deep breath, you bend down and flip ba
 closed and his skin is a pale hue. Dead! However, you were half expecting something like this and so you aren’t particularly shocked or frightened. But why keep a body in a room like this?
 {Selector: Go(25)}Will you search the body{/Selector}
 {Selector: Go(207}Close the lid and leave{/Selector}
+
+{Scene:314}
+There doesn’t seem to be anything hidden in the pile of bones as you brush them aside with your foot. Disturbingly, many of them seem human – indeed, you spot skulls, ribcages, leg bones,
+and other recognizable parts. After a few minutes, you decide that you have had enough of this place and turn to leave.
+{Selector: Go(358)}Continue{/Selector}
 
 {Scene:319}
 You have been following the lighted tunnel for several meters when it takes a sharp turn to the right. You follow the turn and immediately stop when you are confronted – oddly enough –

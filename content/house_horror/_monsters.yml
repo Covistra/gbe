@@ -18,3 +18,8 @@ HeadlessCorpse:
     skill: 7
     stamina: 7
   image: unknown.jpg
+Vampire:
+  attributes:
+    skill: 11
+    stamina: 14
+  image: unknown.jpg
